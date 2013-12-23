@@ -37,35 +37,35 @@ $_GET = $route->startRouting($basedir, $params, $exceptions);
 		 * the script above will show something like this:
 		 * 
 		 * http://www.example.com/routing/en/user/Admin will generate this:
-		 * Language: en			#0
-		 * Page: user			#1
-		 * Subpage: Admin		#2
+		 * Language: en
+		 * Page: user
+		 * Subpage: Admin
 		 * 
 		 * http://www.example.com/routing/user/Admin will generate this:
-		 * Page: user			#0
-		 * Subpage: Admin		#1
+		 * Page: user
+		 * Subpage: Admin
 		 * 
 		 * http://www.example.com/routing/user/Admin/settings will generate this:
-		 * Page: user			#0
-		 * Subpage: Admin		#1
-		 * 2: settings			#2
+		 * Page: user
+		 * Subpage: Admin
+		 * 2: settings
 		 * 
 		 * http://www.example.com/routing/user/Admin/settings/notifications will generate this:
-		 * Page: user			#0
-		 * Subpage: Admin		#1
-		 * 2: settings			#2
-		 * 3: notifications		#3
+		 * Page: user
+		 * Subpage: Admin
+		 * 2: settings
+		 * 3: notifications
 		 * 
 		 * http://www.example.com/routing/user/Admin?tab=followers will generate this:
-		 * Page: user			#0
-		 * Subpage: Admin		#1
-		 * tab: followers		#2
+		 * Page: user
+		 * Subpage: Admin
+		 * tab: followers
 		 * 
 		 * http://www.example.com/routing/user/Admin?tab=followers&lists=20 will generate this:
-		 * Page: user			#0
-		 * Subpage: Admin		#1
-		 * tab: followers		#2
-		 * lists: 20			#3
+		 * Page: user
+		 * Subpage: Admin
+		 * tab: followers
+		 * lists: 20
 		 */
 		?>
 	</body>
