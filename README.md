@@ -10,7 +10,7 @@ EasyRouter is simple php routing-system.
 
 Move .htaccess from src into the root directory of your website. After that you have to move the route.php from src into one directory of your website.
 
-Now you have to start routing in your website:
+Now you have to start routing on your website:
 
 ```php
 <?php
@@ -48,4 +48,25 @@ $route->startRouting( string $base_directory [, array $parameters = null [, arra
     );
     $_GET = $route->startRouting($base_directory, $parameters, $exceptions);
 ?>
+```
+
+```
+http://www.yourwebsite.com/en/user will generate this:
+$_GET['language'] = 'en'
+$_GET['page'] = 'user'
+
+http://www.yourwebsite.com/user/en will generate this:
+$_GET['page'] = 'user'
+$_GET[1] = 'en'
+
+http://www.yourwebsite.com/en will generate this:
+$_GET['language'] = 'en'
+
+http://www.yourwebsite.com/user will generate this:
+$_GET['page'] = 'user'
+
+http://www.yourwebsite.com/de/user?tab=contributions will generate this:
+$_GET['language'] = 'de'
+$_GET['page'] = 'user'
+$_GET['tab'] = 'contributions'
 ```
