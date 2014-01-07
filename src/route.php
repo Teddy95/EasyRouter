@@ -99,14 +99,42 @@ class route {
 				// if the current parameter is the exception parameter, then the parameter must be treated specially
 				if (!is_null($exceptions)) {
 					foreach ($exceptions as $exception) {
+						$route_i = $route[$i];
+
+						// check options
+						if (!is_null($exception["options"])) {
+							if ($exception["options"]["strtolower"] == TRUE) {
+								$route_i = strtolower($route_i);
+							}
+							if ($exception["options"]["strtoupper"] == TRUE) {
+								$route_i = strtoupper($route_i);
+							}
+							if ($exception["options"]["strtotime"] == TRUE) {
+								$route_i = strtotime($route_i);
+							}
+							if ($exception["options"]["strtoint"] == TRUE) {
+								$route_i = intval($route_i);
+							}
+							if ($exception["options"]["inttobinary"] == TRUE) {
+								$route_i = decbin($route_i);
+							}
+							if ($exception["options"]["addition"]) {
+								$route_i = $route_i . $exception["options"]["addition"];
+							}
+							if ($exception["options"]["additionBevor"]) {
+								$route_i = $exception["options"]["additionBefore"] . $route_i;
+							}
+						}
+
+						// load params
 						if ($params[$i + $k] == $exception["param"]) {
 							foreach ($exception["exceptions"] as $excep) {
-								if ($excep == $route[$i]) {
+								if ($excep == $route_i) {
 									$l++;
 								}
 							}
 							if ($l > 0) {
-								$__GET[$params[$i + $k]] = $route[$i];
+								$__GET[$params[$i + $k]] = $route_i;
 								$l = 0;
 								goto paramEnd;
 							} else {
