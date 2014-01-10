@@ -70,3 +70,84 @@ $_GET['language'] = 'de'
 $_GET['page'] = 'user'
 $_GET['tab'] = 'contributions'
 ```
+
+#### The option parameter
+
+The option parameter is inside the exception parameter and transform the active $\_GET[$i] to lowercase, uppercase or something else before it will parsed.
+
+Little example:
+
+```php
+<?php
+$basedir = "http://www.yourwebsite.com";
+$params = array("page", "subpage");
+$exceptions = array();
+$exceptions[] = array(
+	"param" => "page",
+	"exceptions" => array("contributions", "hellostats", "commits"),
+	"options" => array(
+		"strtolower" => true,
+		"additionBefore" => "hello"
+	)
+);
+$_GET = $route->startRouting($basedir, $params, $exceptions);
+?>
+```
+
+```
+http://www.yourwebsite.com/StAtS/test
+will generate:
+$_GET["page"] = "hellostats"
+$_GET["subpage"] = "test"
+```
+
+The options are:  
+strtolower (bool)  
+strtoupper (bool)  
+strtotime (bool)  
+strtoint (bool)  
+inttobinary (bool)  
+addition (string)  
+additionBefore (string)  
+
+```php
+<?php
+$exceptions[] = array(
+	"param" => "param",
+	"exceptions" => array("exception1", "exception2"),
+	"options" => array(
+		"strtolower" => false, // default set false
+		"strtoupper" => false,
+		"strtotime" => false,
+		"strtoint" => false,
+		"inttobinary" => false,
+		"addition" => "",
+		"additionBefore" => ""
+	)
+);
+?>
+```
+
+### License
+
+The MIT License (MIT)
+
+Copyright (c) 2014 EasyRouter
+
+Permission is hereby granted, free of charge, to any person obtaining a copy  
+of this software and associated documentation files (the "Software"), to deal  
+in the Software without restriction, including without limitation the rights  
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell  
+copies of the Software, and to permit persons to whom the Software is  
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in  
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR  
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,  
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE  
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER  
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,  
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN  
+THE SOFTWARE.
