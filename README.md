@@ -121,8 +121,8 @@ $exceptions[] = array(
 		"strtotime" => false,
 		"strtoint" => false,
 		"inttobinary" => false,
-		"addition" => "",
-		"additionBefore" => ""
+		"addition" => null, // default set null
+		"additionBefore" => null
 	)
 );
 ?>
