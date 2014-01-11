@@ -124,6 +124,16 @@ class route {
 							if ($exception["options"]["additionBevor"]) {
 								$route_i = $exception["options"]["additionBefore"] . $route_i;
 							}
+							if ($exception["options"]["replace"]) {
+								if ($exception["options"]["replace"]["ireplace"] == TRUE) {
+									$route_i = str_ireplace($exception["options"]["replace"]["search"], $exception["options"]["replace"]["replace"], $route_i);
+								} else {
+									$route_i = str_replace($exception["options"]["replace"]["search"], $exception["options"]["replace"]["replace"], $route_i);
+								}
+							}
+							if ($exception["options"]["pregreplace"]) {
+								$route_i = preg_replace($exception["options"]["pregreplace"]["pattern"], $exception["options"]["pregreplace"]["replace"], $route_i);
+							}
 						}
 
 						// load params
