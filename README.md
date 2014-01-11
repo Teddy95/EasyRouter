@@ -109,6 +109,8 @@ strtoint (bool)
 inttobinary (bool)  
 addition (string)  
 additionBefore (string)  
+replace (array) [includes: "search" => string, "replace" => string, "ireplace" => bool]  
+pregreplace (array) [includes: "pattern" => string, "replace" => string]  
 
 ```php
 <?php
@@ -122,7 +124,16 @@ $exceptions[] = array(
 		"strtoint" => false,
 		"inttobinary" => false,
 		"addition" => null, // default set null
-		"additionBefore" => null
+		"additionBefore" => null,
+		"replace" => array(
+			"search" => null,
+			"replace" => null,
+			"ireplace" => false
+			),
+		"pregreplace" => array(
+			"pattern" => null,
+			"replace" => null
+			)
 	)
 );
 ?>
