@@ -8,6 +8,8 @@ EasyRouter is simple php routing-system.
 
 ### Installation
 
+> Alternatively you can use our [start_route.php](https://gist.github.com/Teddy95/8387632) file!
+
 Move .htaccess from src into the root directory of your website. After that you have to move the route.php from src into one directory of your website.
 
 Now you have to start routing on your website:
