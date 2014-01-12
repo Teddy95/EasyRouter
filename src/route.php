@@ -132,7 +132,15 @@ class route {
 								}
 							}
 							if ($exception["options"]["pregreplace"]) {
-								$route_i = preg_replace($exception["options"]["pregreplace"]["pattern"], $exception["options"]["pregreplace"]["replace"], $route_i);
+								if (!is_null($exception["options"]["pregreplace"]["pattern"]) || !is_null($exception["options"]["pregreplace"]["replace"])) {
+									if (is_null($exception["options"]["pregreplace"]["pattern"])) {
+										$exception["options"]["pregreplace"]["pattern"] = "/.*/";
+									}
+									if (is_null($exception["options"]["pregreplace"]["replace"])) {
+										$exception["options"]["pregreplace"]["replace"] = "";
+									}
+									$route_i = preg_replace($exception["options"]["pregreplace"]["pattern"], $exception["options"]["pregreplace"]["replace"], $route_i);
+								}
 							}
 						}
 
