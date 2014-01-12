@@ -9,6 +9,8 @@ EasyRouter ist ein einfaches PHP Routing System.
 
 ### Installation
 
+> Alternativ zur normalen Installation kann auch unsere [start_route.php](https://gist.github.com/Teddy95/8387632) Datei genutzt werden!
+
 Zu Beginn muss die .htaccess Datei des Routing-Systems in das Root-Verzeichnis der Webseite kopiert/verschoben werden, in der es zum Einsatz kommen soll.
 
 Nun starten wir das routen:
