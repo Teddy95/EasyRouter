@@ -1,6 +1,8 @@
+![Image](http://i.imgur.com/M5b5J0b.png)
+
 # EasyRouter
 
-EasyRouter is simple php routing-system.
+EasyRouter is a simple php routing-system.
 
 - Beautiful URL for every page on your website
 - Search Engine Optimization
