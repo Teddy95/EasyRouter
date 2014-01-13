@@ -15,7 +15,9 @@ EasyRouter ist ein einfaches PHP Routing System.
 
 Zu Beginn muss die .htaccess Datei des Routing-Systems in das Root-Verzeichnis der Webseite kopiert/verschoben werden, in der es zum Einsatz kommen soll.
 
-Nun starten wir das routen:
+**Wichtig:** Die [.htaccess](https://github.com/Teddy95/EasyRouter/blob/master/src/.htaccess) Datei leitet zur `index.php` Datei, daher sollte der Code auch in der `index.php` Datei oder in einer Datei welche in die `index.php` Datei implementiert ist, ausgeführt werden! - _Alternativ kann die [.htaccess](https://github.com/Teddy95/EasyRouter/blob/master/src/.htaccess) Datei auch umgeschrieben werden!_
+
+Nun starten wir das Routen:
 
 ```php
 <?php
