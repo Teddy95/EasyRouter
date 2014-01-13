@@ -1,3 +1,5 @@
+![Image](http://i.imgur.com/EIIWanz.png)
+
 # EasyRouter
 
 EasyRouter ist ein einfaches PHP Routing System.
