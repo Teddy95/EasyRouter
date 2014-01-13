@@ -1,4 +1,4 @@
-![Image](http://i.imgur.com/M5b5J0b.png)
+![Image](http://i.imgur.com/EIIWanz.png)
 
 # EasyRouter
 
