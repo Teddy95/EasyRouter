@@ -26,11 +26,33 @@
  * SOFTWARE.
  */
 
+namespace Teddy95\EasyRouter;
+
 class route {
-	public function startRouting ($basedir = "", $params = null, $exceptions = null) {
+
+	// informations about EasyRouter and its developer
+	public static $author = "Andre Sieverding";
+	public static $license = "MIT http://opensource.org/licenses/MIT";
+	public static $version = "0.2";
+	public static $website = "http://www.andre-sieverding.de";
+	public static $github = "https://github.com/Teddy95";
+	public static $src = "https://github.com/Teddy95/EasyRouter";
+	
+	public static function start ($basedir = null, $params = null, $exceptions = null, $load_GET = true) {
 
 		// current path
 		$uri = "http://" . $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
+
+		// generate basedir
+		if (is_null($basedir)) {
+			if (!$_SERVER['HTTPS']) {
+				$scheme = 'http://';
+			} else {
+				$scheme = 'https://';
+			}
+			$basedir = $scheme . $_SERVER['SERVER_NAME'] . $_SERVER['SCRIPT_NAME'];
+			$basedir = str_replace('/' . basename($scheme . $_SERVER['SERVER_NAME'] . $_SERVER['SCRIPT_NAME']), '', $basedir);
+		}
 
 		// delete last slash from the root directory
 		if (substr($basedir, -1, 1) == "/") {
@@ -54,6 +76,39 @@ class route {
 
 			// load the individual parameters in the $_GET array
 			$__GET = explode("/", urldecode($uri));
+			$getCount = count($__GET) - 1;
+
+			if (strpos($__GET[$getCount], '?') == true) { # a question mark must be present in the parameter
+				if (substr($__GET[$getCount], -1, 1) == '?') { # is the last character a question mark?
+					$__GET[$getCount] = substr($__GET[$getCount], 0, strlen($__GET[$getCount]) - 1);
+					$glue = "?";
+					$glueGetParam = false;
+				} else {
+					$glue = "";
+					$glueGetParam = false;
+				}
+				if (strpos($__GET[$getCount], '?') == true) {
+					$glueGetParam = true;
+					$elements = explode('?', $__GET[$getCount], 2);
+					$__GET[$getCount] = $elements[0];
+					$elements[1] .= $glue;
+					$getParams = explode('&', $elements[1]);
+					$trueGetParams = array();
+					foreach ($getParams as $getParam) {
+						if (strpos($getParam, '=') == true) {
+							$paramArray = explode('=', $getParam, 2);
+							$trueGetParams[$paramArray[0]] = $paramArray[1];
+						}
+					}
+				}
+				$__GET[$getCount] .= $glueGetParam == false ? $glue : '';
+			}
+
+			if (count($trueGetParams) > 0) {
+				foreach ($trueGetParams as $key => $value) {
+					$__GET[$key] = $value;
+				}
+			}
 
 		} else {
 
@@ -184,10 +239,31 @@ class route {
 			}
 		}
 
-		// return the array
-		return $__GET;
+		if ($load_GET === TRUE) {
+			$GLOBALS['_GET'] = $__GET;
+			return;
+		} else {
+			// return array
+			return $__GET;
+		}
+		
 	}
-}
 
-$route = new route;
+	// returns the informations about EasyRouter
+	public static function info () {
+
+		$informations = array(
+			"author" => self::$author,
+			"license" => self::$license,
+			"version" => self::$version,
+			"website" => self::$website,
+			"github" => self::$github,
+			"src" => self::$src
+			);
+
+		return $informations;
+
+	}
+	
+}
 ?>
