@@ -21,8 +21,15 @@ Now you have to start routing on your website:
 ```php
 <?php
 	include('route.php');
-    $base_directory = "http://www.yourwebsite.com";
-    $_GET = $route->startRouting($base_directory);
+	Teddy95\EasyRouter\route::start();
+?>
+```
+or:
+
+```php
+<?php
+	include('route.php');
+	$_GET = Teddy95\EasyRouter\route::start(null, null, null, false);
 ?>
 ```
 
@@ -31,7 +38,7 @@ The parameters from your URL are now in the ```$_GET``` array.
 ### The routing-function and their parameters
 
 ```php
-$route->startRouting( string $base_directory [, array $parameters = null [, array $exceptions = null ]] )
+$route->startRouting([ string $base_directory = null [, array $parameters = null [, array $exceptions = null [, bool $load_GET = true ]]] )
 ```
 
 ```$base_directory``` = URL to the root-directory of your website.
@@ -40,19 +47,21 @@ $route->startRouting( string $base_directory [, array $parameters = null [, arra
 
 ```$exceptions``` = Exceptions for parameters. If a value of a parameter not a value of an exception for this parameter, the parameter will be ignored.
 
+```$load_GET``` = True -> Params will be loaded in the `$_GET` array.
+
 #### Little example with parameters and exceptions:
 
 ```php
 <?php
 	include('route.php');
-    $base_directory = "http://www.yourwebsite.com";
-    $parameters = array("language", "page");
-    $exceptions = array();
-    $exceptions[]= array(
-    	"param" => "language",
-        "exceptions" => array("en", "de")
-    );
-    $_GET = $route->startRouting($base_directory, $parameters, $exceptions);
+	$base_directory = "http://www.yourwebsite.com";
+	$parameters = array("language", "page");
+	$exceptions = array();
+	$exceptions[]= array(
+		"param" => "language",
+		"exceptions" => array("en", "de")
+		);
+	Teddy95\EasyRouter\route::start($base_directory, $parameters, $exceptions);
 ?>
 ```
 
@@ -85,18 +94,18 @@ Little example:
 
 ```php
 <?php
-$basedir = "http://www.yourwebsite.com";
-$params = array("page", "subpage");
-$exceptions = array();
-$exceptions[] = array(
-	"param" => "page",
-	"exceptions" => array("contributions", "hellostats", "commits"),
-	"options" => array(
-		"strtolower" => true,
-		"additionBefore" => "hello"
-	)
-);
-$_GET = $route->startRouting($basedir, $params, $exceptions);
+	$basedir = "http://www.yourwebsite.com";
+	$params = array("page", "subpage");
+	$exceptions = array();
+	$exceptions[] = array(
+		"param" => "page",
+		"exceptions" => array("contributions", "hellostats", "commits"),
+		"options" => array(
+			"strtolower" => true,
+			"additionBefore" => "hello"
+		)
+	);
+	Teddy95\EasyRouter\route::start($basedir, $params, $exceptions);
 ?>
 ```
 
@@ -120,28 +129,28 @@ pregreplace (array) [includes: "pattern" => string, "replace" => string]
 
 ```php
 <?php
-$exceptions[] = array(
-	"param" => "param",
-	"exceptions" => array("exception1", "exception2"),
-	"options" => array(
-		"strtolower" => false, // default set false
-		"strtoupper" => false,
-		"strtotime" => false,
-		"strtoint" => false,
-		"inttobinary" => false,
-		"addition" => null, // default set null
-		"additionBefore" => null,
-		"replace" => array(
-			"search" => null,
-			"replace" => null,
-			"ireplace" => false
-			),
-		"pregreplace" => array(
-			"pattern" => null,
-			"replace" => null
-			)
-	)
-);
+	$exceptions[] = array(
+		"param" => "param",
+		"exceptions" => array("exception1", "exception2"),
+		"options" => array(
+			"strtolower" => false, // default set false
+			"strtoupper" => false,
+			"strtotime" => false,
+			"strtoint" => false,
+			"inttobinary" => false,
+			"addition" => null, // default set null
+			"additionBefore" => null,
+			"replace" => array(
+				"search" => null,
+				"replace" => null,
+				"ireplace" => false
+				),
+			"pregreplace" => array(
+				"pattern" => null,
+				"replace" => null
+				)
+		)
+	);
 ?>
 ```
 
