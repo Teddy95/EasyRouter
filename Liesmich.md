@@ -22,8 +22,15 @@ Nun starten wir das Routen:
 ```php
 <?php
 	include('route.php');
-  $base_directory = "http://www.yourwebsite.com";
-  $_GET = $route->startRouting($base_directory);
+	Teddy95\EasyRouter\route::start();
+?>
+```
+oder:
+
+```php
+<?php
+	include('route.php');
+	$_GET = Teddy95\EasyRouter\route::start(null, null, null, false);
 ?>
 ```
 
@@ -33,7 +40,7 @@ Im folgenden Teil der Dokumentation stehen weiteren Optionen und Möglichkeiten,
 ### Die Routing Function (startRouting();) und ihre Parameter.
 
 ```php
-$route->startRouting( string $base_directory [, array $parameters = null [, array $exceptions = null ]] )
+$route->startRouting([ string $base_directory = null [, array $parameters = null [, array $exceptions = null [, bool $load_GET = true ]]] )
 ```
 
 ```$base_directory``` = URL zum Root-Verzeichnis der Webseite.
@@ -42,19 +49,21 @@ $route->startRouting( string $base_directory [, array $parameters = null [, arra
 
 ```$exceptions``` = Ausnahmen für Parameter. Der Parameter existiert am Ende nur, wenn ein Wert aus den Exceptions darin auftaucht.
 
+```$load_GET``` = True -> Parameter werden in das `$_GET` Array geladen.
+
 #### Kleines Beispiel mit Parametern und Ausnahmen:
 
 ```php
 <?php
 	include('route.php');
-    $base_directory = "http://www.yourwebsite.com";
-    $parameters = array("language", "page"); // http://www.yourwebsite.com/language/page
-    $exceptions = array();
-    $exceptions[]= array(
-    	"param" => "language",
-        "exceptions" => array("en", "de") // /language MUSS en oder de sein, damit es in den Output-Parameter geladen wird!
-    );
-    $_GET = $route->startRouting($base_directory, $parameters, $exceptions);
+	$base_directory = "http://www.yourwebsite.com";
+	$parameters = array("language", "page"); // http://www.yourwebsite.com/language/page
+	$exceptions = array();
+	$exceptions[]= array(
+		"param" => "language",
+		"exceptions" => array("en", "de") // /language MUSS en oder de sein, damit es in den Output-Parameter geladen wird!
+		);
+	Teddy95\EasyRouter\route::start($base_directory, $parameters, $exceptions);
 ?>
 ```
 
@@ -87,19 +96,19 @@ Beispiel:
 
 ```php
 <?php
-$basedir = "http://www.yourwebsite.com";
-$params = array("page", "subpage");
-$exceptions = array();
-$exceptions[] = array(
-	"param" => "page",
-	"exceptions" => array("contributions", "hellostats", "commits"),
-	"options" => array(
-		"strtolower" => true, // Der Parameter page in der URI wird nun in Kleinbuchstaben umgewandelt -> z.B. StAtS wird nun zu stats
-		"additionBefore" => "hello" // Und nun wird hello voran geschrieben -> stats wird nun zu hellostats
-		# Nun, da keine Optionen mehr anfallen, wird geprüft, ob hellostats in den Exceptions steht
-	)
-);
-$_GET = $route->startRouting($basedir, $params, $exceptions);
+	$basedir = "http://www.yourwebsite.com";
+	$params = array("page", "subpage");
+	$exceptions = array();
+	$exceptions[] = array(
+		"param" => "page",
+		"exceptions" => array("contributions", "hellostats", "commits"),
+		"options" => array(
+			"strtolower" => true, // Der Parameter page in der URI wird nun in Kleinbuchstaben umgewandelt -> z.B. StAtS wird nun zu stats
+			"additionBefore" => "hello" // Und nun wird hello voran geschrieben -> stats wird nun zu hellostats
+			# Nun, da keine Optionen mehr anfallen, wird geprüft, ob hellostats in den Exceptions steht
+		)
+	);
+	Teddy95\EasyRouter\route::start($basedir, $params, $exceptions);
 ?>
 ```
 
@@ -126,28 +135,28 @@ pregreplace (array) [beinhaltet: "pattern" => string, "replace" => string]
 
 ```php
 <?php
-$exceptions[] = array(
-	"param" => "param",
-	"exceptions" => array("exception1", "exception2"),
-	"options" => array(
-		"strtolower" => false, // Standardwert ist false
-		"strtoupper" => false,
-		"strtotime" => false,
-		"strtoint" => false,
-		"inttobinary" => false,
-		"addition" => null, // Standardwert ist null
-		"additionBefore" => null,
-		"replace" => array(
-			"search" => null,
-			"replace" => null,
-			"ireplace" => false
-			),
-		"pregreplace" => array(
-			"pattern" => null,
-			"replace" => null
-			)
-	)
-);
+	$exceptions[] = array(
+		"param" => "param",
+		"exceptions" => array("exception1", "exception2"),
+		"options" => array(
+			"strtolower" => false, // Standardwert ist false
+			"strtoupper" => false,
+			"strtotime" => false,
+			"strtoint" => false,
+			"inttobinary" => false,
+			"addition" => null, // Standardwert ist null
+			"additionBefore" => null,
+			"replace" => array(
+				"search" => null,
+				"replace" => null,
+				"ireplace" => false
+				),
+			"pregreplace" => array(
+				"pattern" => null,
+				"replace" => null
+				)
+		)
+	);
 ?>
 ```
 
