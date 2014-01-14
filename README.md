@@ -14,7 +14,7 @@ EasyRouter is a simple php routing-system.
 
 Move .htaccess from src into the root directory of your website. After that you have to move the route.php from src into one directory of your website.
 
-**Important:** The [.htaccess](https://github.com/Teddy95/EasyRouter/blob/master/src/.htaccess) file redirects to the `index.php` file, so the code should be written into the `index.php` file! - _Alternatively you can rewrite the [.htaccess](https://github.com/Teddy95/EasyRouter/blob/master/src/.htaccess) file!_
+**Important:** The [`.htaccess`](https://github.com/Teddy95/EasyRouter/blob/master/src/.htaccess) file redirects to the `index.php` file, so the code should be written into the `index.php` file! - _Alternatively you can rewrite the [`.htaccess`](https://github.com/Teddy95/EasyRouter/blob/master/src/.htaccess) file!_
 
 Now you have to start routing on your website:
 
@@ -153,6 +153,15 @@ pregreplace (array) [includes: "pattern" => string, "replace" => string]
 	);
 ?>
 ```
+
+### Fix version 0.1
+
+Please update to version 0.2 if you have not already done so!  
+You can use our [`fix_route.php`](https://gist.github.com/Teddy95/548c8c3e3c9cd4346841) file, so you needn't rewrite your code.
+
+If you **don't want to update**, there are still interesting links:
+- Version 0.1 [`src/route.php`](https://github.com/Teddy95/EasyRouter/blob/88b5b9c5baf1405af9fbc399fcf0fe02cecce325/src/route.php)
+- Version 0.1 [`README.md`](https://github.com/Teddy95/EasyRouter/blob/5fa588cb935cf77f30e1743a583d551f5b86b7b7/README.md)
 
 ### License
 
