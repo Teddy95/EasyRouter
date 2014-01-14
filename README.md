@@ -154,7 +154,7 @@ pregreplace (array) [includes: "pattern" => string, "replace" => string]
 ?>
 ```
 
-### Fix version 0.1
+### Version 0.1 fix
 
 Please update to version 0.2 if you have not already done so!  
 You can use our [`fix_route.php`](https://gist.github.com/Teddy95/548c8c3e3c9cd4346841) file, so you needn't rewrite your code.
