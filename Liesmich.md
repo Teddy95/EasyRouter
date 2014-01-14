@@ -15,7 +15,7 @@ EasyRouter ist ein einfaches PHP Routing System.
 
 Zu Beginn muss die .htaccess Datei des Routing-Systems in das Root-Verzeichnis der Webseite kopiert/verschoben werden, in der es zum Einsatz kommen soll.
 
-**Wichtig:** Die [.htaccess](https://github.com/Teddy95/EasyRouter/blob/master/src/.htaccess) Datei leitet zur `index.php` Datei, daher sollte der Code auch in der `index.php` Datei oder in einer Datei welche in die `index.php` Datei implementiert ist, ausgeführt werden! - _Alternativ kann die [.htaccess](https://github.com/Teddy95/EasyRouter/blob/master/src/.htaccess) Datei auch umgeschrieben werden!_
+**Wichtig:** Die [`.htaccess`](https://github.com/Teddy95/EasyRouter/blob/master/src/.htaccess) Datei leitet zur `index.php` Datei, daher sollte der Code auch in der `index.php` Datei oder in einer Datei welche in die `index.php` Datei implementiert ist, ausgeführt werden! - _Alternativ kann die [`.htaccess`](https://github.com/Teddy95/EasyRouter/blob/master/src/.htaccess) Datei auch umgeschrieben werden!_
 
 Nun starten wir das Routen:
 
@@ -159,6 +159,15 @@ pregreplace (array) [beinhaltet: "pattern" => string, "replace" => string]
 	);
 ?>
 ```
+
+### Version 0.1 Fix
+
+Bitte update auf Verion 0.2, wenn du dies noch nicht getan hast!  
+Du kannst unsere [`fix_route.php`](https://gist.github.com/Teddy95/548c8c3e3c9cd4346841) Datei nutzen, damit du deinen Code nicht umschreiben musst.
+
+Wenn du **nicht updaten möchtest**, findest du hier noch einige interessante Link:
+- Version 0.1 [`src/route.php`](https://github.com/Teddy95/EasyRouter/blob/88b5b9c5baf1405af9fbc399fcf0fe02cecce325/src/route.php)
+- Version 0.1 [`Liesmich.md`](https://github.com/Teddy95/EasyRouter/blob/6b104d20daba957453b4fbe12020b9dad1cd5895/Liesmich.md)
 
 ### Lizenz
 
