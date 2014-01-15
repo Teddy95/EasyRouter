@@ -1,5 +1,8 @@
 # EasyRouter
 
+> **Warning:** This version is outdated!  
+[» Check the new version!](https://github.com/Teddy95/EasyRouter)
+
 EasyRouter is simple php routing-system.
 
 - Beautiful URL for every page on your website
@@ -7,8 +10,6 @@ EasyRouter is simple php routing-system.
 - Easy to use in new and existing projects
 
 ### Installation
-
-> Alternatively you can use our [start_route.php](https://gist.github.com/Teddy95/8387632) file!
 
 Move .htaccess from src into the root directory of your website. After that you have to move the route.php from src into one directory of your website.
 
