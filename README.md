@@ -1,7 +1,7 @@
 # EasyRouter
 
 > **Warning:** This version is outdated!  
-[» Check the new version!](https://github.com/Teddy95/EasyRouter)
+[» Check out the new version!](https://github.com/Teddy95/EasyRouter)
 
 EasyRouter is simple php routing-system.
 
