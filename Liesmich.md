@@ -165,9 +165,8 @@ pregreplace (array) [beinhaltet: "pattern" => string, "replace" => string]
 Bitte update auf Verion 0.2, wenn du dies noch nicht getan hast!  
 Du kannst unsere [`fix_route.php`](https://gist.github.com/Teddy95/548c8c3e3c9cd4346841) Datei nutzen, damit du deinen Code nicht umschreiben musst.
 
-Wenn du **nicht updaten möchtest**, findest du hier noch einige interessante Link:
-- Version 0.1 [`src/route.php`](https://github.com/Teddy95/EasyRouter/blob/88b5b9c5baf1405af9fbc399fcf0fe02cecce325/src/route.php)
-- Version 0.1 [`Liesmich.md`](https://github.com/Teddy95/EasyRouter/blob/6b104d20daba957453b4fbe12020b9dad1cd5895/Liesmich.md)
+Wenn du **nicht updaten möchtest**, findest du hier noch einen interessanten Link:
+- [Version 0.1](https://github.com/Teddy95/EasyRouter/tree/version-0.1)
 
 ### Lizenz
 
