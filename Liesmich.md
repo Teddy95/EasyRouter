@@ -40,7 +40,7 @@ Im folgenden Teil der Dokumentation stehen weiteren Optionen und Möglichkeiten,
 ### Die Routing Function (startRouting();) und ihre Parameter.
 
 ```php
-$route->startRouting([ string $base_directory = null [, array $parameters = null [, array $exceptions = null [, bool $load_GET = true ]]] )
+Teddy95\EasyRouter\route::start([ string $base_directory = null [, array $parameters = null [, array $exceptions = null [, bool $load_GET = true ]]] )
 ```
 
 ```$base_directory``` = URL zum Root-Verzeichnis der Webseite.
