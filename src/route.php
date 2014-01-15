@@ -45,7 +45,7 @@ class route {
 
 		// generate basedir
 		if (is_null($basedir)) {
-			if (!$_SERVER['HTTPS']) {
+			if (!isset($_SERVER['HTTPS'])) {
 				$scheme = 'http://';
 			} else {
 				$scheme = 'https://';
@@ -104,7 +104,7 @@ class route {
 				$__GET[$getCount] .= $glueGetParam == false ? $glue : '';
 			}
 
-			if (count($trueGetParams) > 0) {
+			if (isset($trueGetParams) && count($trueGetParams) > 0) {
 				foreach ($trueGetParams as $key => $value) {
 					$__GET[$key] = $value;
 				}
@@ -158,40 +158,40 @@ class route {
 
 						// check options
 						if (!is_null($exception["options"])) {
-							if ($exception["options"]["strtolower"] == TRUE) {
+							if (isset($exception["options"]["strtolower"]) && $exception["options"]["strtolower"] == TRUE) {
 								$route_i = strtolower($route_i);
 							}
-							if ($exception["options"]["strtoupper"] == TRUE) {
+							if (isset($exception["options"]["strtoupper"]) && $exception["options"]["strtoupper"] == TRUE) {
 								$route_i = strtoupper($route_i);
 							}
-							if ($exception["options"]["strtotime"] == TRUE) {
+							if (isset($exception["options"]["strtotime"]) && $exception["options"]["strtotime"] == TRUE) {
 								$route_i = strtotime($route_i);
 							}
-							if ($exception["options"]["strtoint"] == TRUE) {
+							if (isset($exception["options"]["strtoint"]) && $exception["options"]["strtoint"] == TRUE) {
 								$route_i = intval($route_i);
 							}
-							if ($exception["options"]["inttobinary"] == TRUE) {
+							if (isset($exception["options"]["inttobinary"]) && $exception["options"]["inttobinary"] == TRUE) {
 								$route_i = decbin($route_i);
 							}
-							if ($exception["options"]["addition"]) {
+							if (isset($exception["options"]["addition"])) {
 								$route_i = $route_i . $exception["options"]["addition"];
 							}
-							if ($exception["options"]["additionBevor"]) {
+							if (isset($exception["options"]["additionBevor"])) {
 								$route_i = $exception["options"]["additionBefore"] . $route_i;
 							}
-							if ($exception["options"]["replace"]) {
-								if ($exception["options"]["replace"]["ireplace"] == TRUE) {
+							if (isset($exception["options"]["replace"])) {
+								if (isset($exception["options"]["replace"]["ireplace"]) && $exception["options"]["replace"]["ireplace"] == TRUE) {
 									$route_i = str_ireplace($exception["options"]["replace"]["search"], $exception["options"]["replace"]["replace"], $route_i);
 								} else {
 									$route_i = str_replace($exception["options"]["replace"]["search"], $exception["options"]["replace"]["replace"], $route_i);
 								}
 							}
-							if ($exception["options"]["pregreplace"]) {
-								if (!is_null($exception["options"]["pregreplace"]["pattern"]) || !is_null($exception["options"]["pregreplace"]["replace"])) {
-									if (is_null($exception["options"]["pregreplace"]["pattern"])) {
+							if (isset($exception["options"]["pregreplace"])) {
+								if (isset($exception["options"]["pregreplace"]["pattern"]) || isset($exception["options"]["pregreplace"]["replace"])) {
+									if (!isset($exception["options"]["pregreplace"]["pattern"])) {
 										$exception["options"]["pregreplace"]["pattern"] = "/.*/";
 									}
-									if (is_null($exception["options"]["pregreplace"]["replace"])) {
+									if (!isset($exception["options"]["pregreplace"]["replace"])) {
 										$exception["options"]["pregreplace"]["replace"] = "";
 									}
 									$route_i = preg_replace($exception["options"]["pregreplace"]["pattern"], $exception["options"]["pregreplace"]["replace"], $route_i);
@@ -200,7 +200,7 @@ class route {
 						}
 
 						// load params
-						if ($params[$i + $k] == $exception["param"]) {
+						if (isset($params[$i + $k]) && $params[$i + $k] == $exception["param"]) {
 							foreach ($exception["exceptions"] as $excep) {
 								if ($excep == $route_i) {
 									$l++;
@@ -218,7 +218,7 @@ class route {
 				}
 
 				// if there are more values ​​as parameters or empty parameters, natural numbers must be followed
-				if (is_null($params[$i + $k]) === TRUE) {
+				if (!isset($params[$i + $k])) {
 					$params[$i + $k] = $i;
 				}
 
@@ -231,7 +231,7 @@ class route {
 
 				paramEnd:
 
-				if (count($trueGetParams) > 0) {
+				if (isset($trueGetParams) && count($trueGetParams) > 0) {
 					foreach ($trueGetParams as $key => $value) {
 						$__GET[$key] = $value;
 					}
