@@ -159,9 +159,8 @@ pregreplace (array) [includes: "pattern" => string, "replace" => string]
 Please update to version 0.2 if you have not already done so!  
 You can use our [`fix_route.php`](https://gist.github.com/Teddy95/548c8c3e3c9cd4346841) file, so you needn't rewrite your code.
 
-If you **don't want to update**, there are still interesting links:
-- Version 0.1 [`src/route.php`](https://github.com/Teddy95/EasyRouter/blob/88b5b9c5baf1405af9fbc399fcf0fe02cecce325/src/route.php)
-- Version 0.1 [`README.md`](https://github.com/Teddy95/EasyRouter/blob/5fa588cb935cf77f30e1743a583d551f5b86b7b7/README.md)
+If you **don't want to update**, there is still an interesting link:
+- [Version 0.1](https://github.com/Teddy95/EasyRouter/tree/version-0.1)
 
 ### License
 
