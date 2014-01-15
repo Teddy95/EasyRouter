@@ -16,7 +16,7 @@ $exceptions[] = array(
 
 
 // start routing an load the parameters into the $_GET array
-$_GET = $route->startRouting($basedir, $params, $exceptions);
+Teddy95\EasyRouter\route::start($basedir, $params, $exceptions);
 ?>
 <!DOCTYPE html>
 <html>
