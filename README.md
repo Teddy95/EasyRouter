@@ -160,7 +160,7 @@ Please update to version 0.2 if you have not already done so!
 You can use our [`fix_route.php`](https://gist.github.com/Teddy95/548c8c3e3c9cd4346841) file, so you needn't rewrite your code.
 
 If you **don't want to update**, there is still an interesting link:
-- [Version 0.1](https://github.com/Teddy95/EasyRouter/tree/version-0.1)
+- [Version 0.1](https://github.com/Teddy95/EasyRouter/tree/v0.1)
 
 ### License
 
