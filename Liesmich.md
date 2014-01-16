@@ -168,6 +168,8 @@ Du kannst unsere [`fix_route.php`](https://gist.github.com/Teddy95/548c8c3e3c9cd
 Wenn du **nicht updaten möchtest**, findest du hier noch einen interessanten Link:
 - [Version 0.1](https://github.com/Teddy95/EasyRouter/tree/v0.1)
 
+-------------
+
 ### Lizenz
 
 The MIT License (MIT)
