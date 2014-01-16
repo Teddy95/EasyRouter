@@ -166,7 +166,7 @@ Bitte update auf Verion 0.2, wenn du dies noch nicht getan hast!
 Du kannst unsere [`fix_route.php`](https://gist.github.com/Teddy95/548c8c3e3c9cd4346841) Datei nutzen, damit du deinen Code nicht umschreiben musst.
 
 Wenn du **nicht updaten möchtest**, findest du hier noch einen interessanten Link:
-- [Version 0.1](https://github.com/Teddy95/EasyRouter/tree/version-0.1)
+- [Version 0.1](https://github.com/Teddy95/EasyRouter/tree/v0.1)
 
 ### Lizenz
 
