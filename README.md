@@ -49,6 +49,10 @@ Teddy95\EasyRouter\route::start([ string $base_directory = null [, array $parame
 
 ```$load_GET``` = True -> Params will be loaded in the `$_GET` array.
 
+### Return values
+
+Returns an array with the uri-params on success or FALSE on failure.
+
 #### Little example with parameters and exceptions:
 
 ```php
