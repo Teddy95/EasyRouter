@@ -41,7 +41,21 @@ class route {
 	public static function start ($basedir = null, $params = null, $exceptions = null, $load_GET = true) {
 
 		// current path
-		$uri = "http://" . $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
+		if (is_null($basedir)) {
+			if (!isset($_SERVER['HTTPS'])) {
+				$uri = "http://" . $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
+			} else {
+				$uri = "https://" . $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
+			}
+		} else {
+			if (substr($basedir, 0, 7) == "http://") {
+				$uri = "http://" . $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
+			} elseif (substr($basedir, 0, 8) == "https://") {
+				$uri = "https://" . $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
+			} else {
+				return false;
+			}
+		}
 
 		// generate basedir
 		if (is_null($basedir)) {
