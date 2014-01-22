@@ -161,7 +161,7 @@ pregreplace (array) [includes: "pattern" => string, "replace" => string]
 ### Download
 
 - [Releases on Github](https://github.com/Teddy95/EasyRouter/releases)
-- [Download latest version from Github](https://github.com/Teddy95/EasyRouter/archive/v0.2.1.zip)
+- **[Download latest version from Github](https://github.com/Teddy95/EasyRouter/archive/v0.2.1.zip)**
 - [Download master from Github](https://github.com/Teddy95/EasyRouter/archive/master.zip)
 - [Download v0.2.1 from Dropbox](https://www.dropbox.com/sh/t2otgnhzv6b2s1i/hgQpyiCExC/EasyRouter)
 
