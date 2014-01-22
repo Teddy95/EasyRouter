@@ -158,9 +158,22 @@ pregreplace (array) [includes: "pattern" => string, "replace" => string]
 ?>
 ```
 
+### Download
+
+- [Releases on Github](https://github.com/Teddy95/EasyRouter/releases)
+- [Download latest version from Github](https://github.com/Teddy95/EasyRouter/archive/v0.2.1.zip)
+- [Download master from Github](https://github.com/Teddy95/EasyRouter/archive/master.zip)
+- [Download v0.2.1 from Dropbox](https://www.dropbox.com/sh/t2otgnhzv6b2s1i/hgQpyiCExC/EasyRouter)
+
+### Contributors
+
+- [Teddy95](https://github.com/Teddy95)
+
+-------------
+
 ### Version 0.1 fix
 
-Please update to version 0.2 if you have not already done so!  
+Please update to version 0.2.1 if you have not already done so!  
 You can use our [`fix_route.php`](https://gist.github.com/Teddy95/548c8c3e3c9cd4346841) file, so you needn't rewrite your code.
 
 If you **don't want to update**, there is still an interesting link:
