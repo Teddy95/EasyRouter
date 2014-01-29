@@ -28,19 +28,28 @@
 
 namespace Teddy95\EasyRouter;
 
-class route {
+class route
+{
 
-	// informations about EasyRouter and its developer
+	/**
+	 * Information about EasyRouter and its developer.
+	 */
 	public static $author = "Andre Sieverding";
 	public static $license = "MIT http://opensource.org/licenses/MIT";
 	public static $version = "0.2";
 	public static $website = "http://www.andre-sieverding.de";
 	public static $github = "https://github.com/Teddy95";
 	public static $src = "https://github.com/Teddy95/EasyRouter";
-	
-	public static function start ($basedir = null, $params = null, $exceptions = null, $load_GET = true) {
 
-		// current path
+	/**
+	 * @return	returns an array with the uri-params on success or FALSE on failure
+	 */
+	public static function start ($basedir = null, $params = null, $exceptions = null, $load_GET = true)
+	{
+
+		/**
+		 * Current path.
+		 */
 		if (is_null($basedir)) {
 			if (!isset($_SERVER['HTTPS'])) {
 				$uri = "http://" . $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
@@ -56,8 +65,10 @@ class route {
 				return false;
 			}
 		}
-
-		// generate basedir
+		
+		/**
+		 * Generate basedir.
+		 */
 		if (is_null($basedir)) {
 			if (!isset($_SERVER['HTTPS'])) {
 				$scheme = 'http://';
@@ -67,13 +78,17 @@ class route {
 			$basedir = $scheme . $_SERVER['SERVER_NAME'] . $_SERVER['SCRIPT_NAME'];
 			$basedir = str_replace('/' . basename($scheme . $_SERVER['SERVER_NAME'] . $_SERVER['SCRIPT_NAME']), '', $basedir);
 		}
-
-		// delete last slash from the root directory
+		
+		/**
+		 * Delete last slash from the root directory.
+		 */
 		if (substr($basedir, -1, 1) == "/") {
 			$basedir = substr($basedir, 0, strlen($basedir) - 1);
 		}
-
-		// is there a slash at the end of the path? (only if there are no parameters!)
+		
+		/**
+		 * Is there a slash at the end of the path? (only if there are no parameters!)
+		 */
 		$slash = "";
 		if ($uri == $basedir) {
 			$slash = "/";
@@ -82,13 +97,17 @@ class route {
 		} elseif (substr($uri, -1, 1) == "/") {
 			$uri = substr($uri, 0, strlen($uri) - 1);
 		}
-
-		// filter out the index file and the base directory
+		
+		/**
+		 * Filter out the index file and the base directory.
+		 */
 		$uri = str_replace($basedir . "/", "", $uri . $slash);
 
 		if (is_null($params) === TRUE) {
-
-			// load the individual parameters in the $_GET array
+			
+			/**
+			 * Load the individual parameters in the $_GET array.
+			 */
 			$__GET = explode("/", urldecode($uri));
 			$getCount = count($__GET) - 1;
 
@@ -125,18 +144,27 @@ class route {
 			}
 
 		} else {
-
-			// load the individual parameters in the $route array
+			
+			/**
+			 * Load the individual parameters in the $route array.
+			 */
 			$route = explode("/", urldecode($uri));
-
-			// count $route
+			
+			/**
+			 * Count $route.
+			 */
 			$j = count($route);
 			$k = 0;
 			$l = 0;
-
-			// while $i is smaller than $j, load parameters in the $_GET array
+			
+			/**
+			 * While $i is smaller than $j, load parameters in the $_GET array.
+			 */
 			for ($i = 0; $i < $j; $i++) {
-				// checking whether the last parameter includes standard $_GET variables
+				
+				/**
+				 * Load the individual parameters in the $route array.
+				 */
 				if ($i == $j - 1) {
 					if (strpos($route[$i], '?') == true) { # a question mark must be present in the parameter
 						if (substr($route[$i], -1, 1) == '?') { # is the last character a question mark?
@@ -164,13 +192,17 @@ class route {
 						$route[$i] .= $glueGetParam == false ? $glue : '';
 					}
 				}
-
-				// if the current parameter is the exception parameter, then the parameter must be treated specially
+				
+				/**
+				 * If the current parameter is the exception parameter, then the parameter must be treated specially.
+				 */
 				if (!is_null($exceptions)) {
 					foreach ($exceptions as $exception) {
 						$route_i = $route[$i];
-
-						// check options
+						
+						/**
+						 * Check options.
+						 */
 						if (!is_null($exception["options"])) {
 							if (isset($exception["options"]["strtolower"]) && $exception["options"]["strtolower"] == TRUE) {
 								$route_i = strtolower($route_i);
@@ -212,8 +244,10 @@ class route {
 								}
 							}
 						}
-
-						// load params
+						
+						/**
+						 * Load params.
+						 */
 						if (isset($params[$i + $k]) && $params[$i + $k] == $exception["param"]) {
 							foreach ($exception["exceptions"] as $excep) {
 								if ($excep == $route_i) {
@@ -230,13 +264,17 @@ class route {
 						}
 					}
 				}
-
-				// if there are more values ​​as parameters or empty parameters, natural numbers must be followed
+				
+				/**
+				 * If there are more values ​​as parameters or empty parameters, natural numbers must be followed.
+				 */
 				if (!isset($params[$i + $k])) {
 					$params[$i + $k] = $i;
 				}
-
-				// the parameter should be ignored, if the value of it is null
+				
+				/**
+				 * The parameter should be ignored, if the value of it is null.
+				 */
 				if (is_null($route[$i]) || empty($route[$i]) || !isset($route[$i])) {
 					#
 				} else {
@@ -255,16 +293,22 @@ class route {
 
 		if ($load_GET === TRUE) {
 			$GLOBALS['_GET'] = $__GET;
+			
 			return;
 		} else {
-			// return array
+			/**
+			 * Return array.
+			 */
 			return $__GET;
 		}
 		
 	}
-
-	// returns the informations about EasyRouter
-	public static function info () {
+	
+	/**
+	 * @return	returns an array with information about EasyRouter
+	 */
+	public static function info ()
+	{
 
 		$informations = array(
 			"author" => self::$author,
