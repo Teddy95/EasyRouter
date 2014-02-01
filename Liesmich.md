@@ -21,7 +21,7 @@ Nun starten wir das Routen:
 
 ```php
 <?php
-	include('route.php');
+	include('EasyRouter.php');
 	Teddy95\EasyRouter\route::start();
 ?>
 ```
@@ -29,7 +29,7 @@ oder:
 
 ```php
 <?php
-	include('route.php');
+	include('EasyRouter.php');
 	$_GET = Teddy95\EasyRouter\route::start(null, null, null, false);
 ?>
 ```
