@@ -499,9 +499,15 @@ class route
 	
 	/**
 	 * @param string	$prepareString
+	 *
+	 * @return bool		Returns FALSE on failure
 	 */
 	public static function prepare ($prepareString)
 	{
+
+		if (!isset($prepareString)) {
+			return false;
+		}
 
 		if (substr($prepareString, -1, 1) == '/') {
 			$prepareString = substr($prepareString, 0, strlen($prepareString)-1);
@@ -519,7 +525,7 @@ class route
 	}
 	
 	/**
-	 * @return array	Returns an array with information about EasyRouter
+	 * @return array	Returns an array with normal GET params
 	 */
 	public static function get_true_params ()
 	{
@@ -548,7 +554,7 @@ class route
 	 * @param string	$href
 	 * @param int		$params
 	 *
-	 * @return bool		Returns false on failure
+	 * @return bool		Returns FALSE on failure
 	 */
 	public static function error ($href, $params = null)
 	{
