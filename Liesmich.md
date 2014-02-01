@@ -48,7 +48,7 @@ Im folgenden Teil der Dokumentation stehen weiteren Optionen und Möglichkeiten,
 ### Download
 
 - [Veröffentlichungen auf Github](https://github.com/Teddy95/EasyRouter/releases)
-- **[Letzte Version von Github runterladen](https://github.com/Teddy95/EasyRouter/archive/v0.2.1.zip)**
+- **[Letzte Version von Github runterladen](https://github.com/Teddy95/EasyRouter/archive/v0.3.0.zip)**
 - [master Branch von Github runterladen](https://github.com/Teddy95/EasyRouter/archive/master.zip)
 
 -------------
