@@ -38,7 +38,7 @@ The parameters from your URL are now in the ```$_GET``` array.
 ### The routing-function and their parameters
 
 ```php
-Teddy95\EasyRouter\route::start([ string $base_directory = null [, array $parameters = null [, array $exceptions = null [, bool $load_GET = true ]]] )
+Teddy95\EasyRouter\route::start([ string $base_directory = null [, array $parameters = null [, array $exceptions = null [, bool $load_GET = true ]]]] )
 ```
 
 ```$base_directory``` = URL to the root-directory of your website.
