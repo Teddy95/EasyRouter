@@ -39,7 +39,7 @@ class route
 	 */
 	public static $author = "Andre Sieverding";
 	public static $license = "MIT http://opensource.org/licenses/MIT";
-	public static $version = "0.3.0";
+	public static $version = "0.4.0";
 	public static $website = "http://www.andre-sieverding.de";
 	public static $github = "https://github.com/Teddy95";
 	public static $src = "https://github.com/Teddy95/EasyRouter";
@@ -50,7 +50,49 @@ class route
 	private static $paramsCount = 0;
 	private static $prepareCount = 0;
 	private static $routed = false;
+
+	/**
+	 * Other parameters for functions.
+	 */
 	private static $prepareString = false;
+	private static $basedir = false;
+	private static $params = false;
+	private static $exceptions = false;
+
+	/**
+	 * @param string	$basedir
+	 * @param array		$params
+	 * @param array		$exceptions
+	 * @param bool		$load_GET
+	 *
+	 * @return array	Returns an array with the uri-params on success or FALSE on failure
+	 */
+	public static function launch ($basedir = null, $params = null, $exceptions = null, $load_GET = true)
+	{
+
+		$callback = false;
+
+		if ($load_GET == TRUE) {
+			if (self::$prepareString != FALSE) {
+				self::execute($basedir, true);
+			} else {
+				self::start($basedir, $params, $exceptions, true);
+			}
+		} else {
+			if (self::$prepareString != FALSE) {
+				$callback = self::execute($basedir, false);
+			} else {
+				$callback = self::start($basedir, $params, $exceptions, false);
+			}
+		}
+
+		if (!$callback) {
+			return;
+		} else {
+			return $callback;
+		}
+		
+	}
 
 	/**
 	 * @param string	$basedir
@@ -62,6 +104,21 @@ class route
 	 */
 	public static function start ($basedir = null, $params = null, $exceptions = null, $load_GET = true)
 	{
+
+		/**
+		 * Check params.
+		 */
+		if (is_null($basedir) && self::$basedir == TRUE) {
+			$basedir = self::$basedir;
+		}
+
+		if (is_null($params) && self::$params == TRUE) {
+			$params = self::$params;
+		}
+
+		if (is_null($exceptions) && self::$exceptions == TRUE) {
+			$exceptions = self::$exceptions;
+		}
 
 		/**
 		 * Current path.
@@ -337,6 +394,13 @@ class route
 	public static function execute ($basedir = null, $load_GET = true)
 	{
 
+		/**
+		 * Check params.
+		 */
+		if (is_null($basedir) && self::$basedir == TRUE) {
+			$basedir = self::$basedir;
+		}
+
 		if (self::$prepareString == FALSE) {
 			return false;
 		}
@@ -590,6 +654,81 @@ class route
 		} else {
 			return false;
 		}
+
+	}
+	
+	/**
+	 * @param string	$basedir
+	 *
+	 * @return bool		Returns FALSE on failure
+	 */
+	public static function set_basedir ($basedir)
+	{
+
+		if (isset($basedir)) {
+			self::$basedir = $basedir;
+		} else {
+			return false;
+		}
+
+	}
+	
+	public static function unset_basedir ()
+	{
+
+		self::$basedir = false;
+
+		return;
+
+	}
+	
+	/**
+	 * @param array		$params
+	 *
+	 * @return bool		Returns FALSE on failure
+	 */
+	public static function set_params ($params)
+	{
+
+		if (isset($params)) {
+			self::$params = $params;
+		} else {
+			return false;
+		}
+
+	}
+	
+	public static function unset_params ()
+	{
+
+		self::$params = false;
+
+		return;
+
+	}
+	
+	/**
+	 * @param array		$exceptions
+	 *
+	 * @return bool		Returns FALSE on failure
+	 */
+	public static function set_exceptions ($exceptions)
+	{
+
+		if (isset($exceptions)) {
+			self::$exceptions = $exceptions;
+		} else {
+			return false;
+		}
+
+	}
+	
+	public static function unset_exceptions ()
+	{
+
+		self::$exceptions = false;
+
+		return;
 
 	}
 	
