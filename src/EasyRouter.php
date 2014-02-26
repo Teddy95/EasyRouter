@@ -623,7 +623,7 @@ class route
 	public static function error ($href, $params = null)
 	{
 
-		if (isset(self::$routed) && self::$routed == TRUE) {
+		if (isset(self::$routed) && self::$routed === TRUE) {
 			if (!isset($params) || is_null($params)) {
 				if (!self::get_true_params()) {
 					$trueGetParams = 0;
