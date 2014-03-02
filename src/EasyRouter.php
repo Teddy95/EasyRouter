@@ -280,7 +280,7 @@ class route
 						/**
 						 * Check options.
 						 */
-						if (!is_null($exception["options"])) {
+						if (isset($exception["options"]) && !is_null($exception["options"])) {
 							if (isset($exception["options"]["strtolower"]) && $exception["options"]["strtolower"] == TRUE) {
 								$route_i = strtolower($route_i);
 							}
