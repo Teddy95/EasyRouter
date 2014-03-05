@@ -39,7 +39,7 @@ class route
 	 */
 	public static $author = "Andre Sieverding";
 	public static $license = "MIT http://opensource.org/licenses/MIT";
-	public static $version = "0.4.0";
+	public static $version = "0.4.1";
 	public static $website = "http://www.andre-sieverding.de";
 	public static $github = "https://github.com/Teddy95";
 	public static $src = "https://github.com/Teddy95/EasyRouter";
