@@ -373,14 +373,18 @@ class route
 		self::$routed = true;
 
 		if ($load_GET === TRUE) {
-			$GLOBALS['_GET'] = $__GET;
-			
-			return;
+			if (isset($__GET)) {
+				$GLOBALS['_GET'] = $__GET;
+				
+				return;
+			}
 		} else {
 			/**
 			 * Return array.
 			 */
-			return $__GET;
+			if (isset($__GET)) {
+				return $__GET;
+			}
 		}
 		
 	}
