@@ -513,7 +513,7 @@ class route
 			}
 		}
 
-		if (strpos($__GET[$latestKey], '?') == true) { # a question mark must be present in the parameter
+		if (isset($__GET) && isset($latestKey) && strpos($__GET[$latestKey], '?') == true) { # a question mark must be present in the parameter
 			if (substr($__GET[$latestKey], -1, 1) == '?') { # is the last character a question mark?
 				$__GET[$latestKey] = substr($__GET[$latestKey], 0, strlen($__GET[$latestKey]) - 1);
 				$glue = "?";
@@ -549,14 +549,18 @@ class route
 		self::$routed = true;
 
 		if ($load_GET === TRUE) {
-			$GLOBALS['_GET'] = $__GET;
-			
-			return;
+			if (isset($__GET)) {
+				$GLOBALS['_GET'] = $__GET;
+				
+				return;
+			}
 		} else {
 			/**
 			 * Return array.
 			 */
-			return $__GET;
+			if (isset($__GET)) {
+				return $__GET;
+			}
 		}
 		
 	}
