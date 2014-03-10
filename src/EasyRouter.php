@@ -493,14 +493,14 @@ class route
 				}
 
 				$prepareParams = $parts[$i];
-				$uriParams = $uriParts[$i];
+				$uriParams = @$uriParts[$i];
 
 				if (isset($uriParams) && !is_null($uriParams) && !empty($uriParams)) {
 					$paramsCount++;
 				}
 			} else {
 				$prepareParams = $parts[$i];
-				$uriParams = $uriParts[$i];
+				$uriParams = @$uriParts[$i];
 
 				if (isset($uriParams) && !is_null($uriParams) && !empty($uriParams)) {
 					$__GET[substr($prepareParams, 1, strlen($prepareParams) - 2)] = $uriParams;
