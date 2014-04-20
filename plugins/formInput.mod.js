@@ -25,8 +25,8 @@
  * SOFTWARE.
  */
 
-// ##########	This is a JavaScript plugin for EasyRouter!		##########
-// ##########	This plugin requires jQuery!					##########
+// ##########	This is a JavaScript plugin for EasyRouter!	##########
+// ##########	This plugin requires jQuery!			##########
 
 /**
  * Plugin description:
