@@ -35,16 +35,6 @@ class route
 {
 
 	/**
-	 * Information about EasyRouter and its developer.
-	 */
-	public static $author = "Andre Sieverding";
-	public static $license = "MIT http://opensource.org/licenses/MIT";
-	public static $version = "0.4.1";
-	public static $website = "http://www.andre-sieverding.de";
-	public static $github = "https://github.com/Teddy95";
-	public static $src = "https://github.com/Teddy95/EasyRouter";
-
-	/**
 	 * Parameters for functions.
 	 */
 	private static $paramsCount = 0;
@@ -741,21 +731,34 @@ class route
 	}
 	
 	/**
-	 * @return array	Returns an array with information about EasyRouter
+	 * @return string	Returns the active path (url) on success or FALSE on failure
 	 */
-	public static function info ()
+	public static function get_active_path ()
 	{
 
-		$informations = array(
-			"author" => self::$author,
-			"license" => self::$license,
-			"version" => self::$version,
-			"website" => self::$website,
-			"github" => self::$github,
-			"src" => self::$src
-			);
+		$allParams = self::start(null, null, null, false);
+		$trueGetParams = self::get_true_params();
 
-		return $informations;
+		if ($trueGetParams == FALSE) {
+			$paramCount = count($allParams) - 0;
+		} else {
+			$paramCount = count($allParams) - count($trueGetParams);
+		}
+
+		if ($paramCount > 0) {
+			if (!isset($_SERVER['HTTPS'])) {
+				$uri = "http://" . $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
+			} else {
+				$uri = "https://" . $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
+			}
+
+			$uriParts = explode($allParams[0], $uri);
+			$uri = $uriParts[0];
+
+			return $uri;
+		} else {
+			return false;
+		}
 
 	}
 	
