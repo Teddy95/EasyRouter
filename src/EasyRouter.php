@@ -731,33 +731,54 @@ class route
 	}
 	
 	/**
+	 * @param bool		$relative
+	 *
 	 * @return string	Returns the active path (url) on success or FALSE on failure
 	 */
-	public static function get_active_path ()
+	public static function get_active_path ($relative = false)
 	{
 
-		$allParams = self::start(null, null, null, false);
-		$trueGetParams = self::get_true_params();
+		if ($relative == FALSE) {
+			$allParams = self::start(null, null, null, false);
+			$trueGetParams = self::get_true_params();
 
-		if ($trueGetParams == FALSE) {
-			$paramCount = count($allParams) - 0;
-		} else {
-			$paramCount = count($allParams) - count($trueGetParams);
-		}
-
-		if ($paramCount > 0) {
-			if (!isset($_SERVER['HTTPS'])) {
-				$uri = "http://" . $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
+			if ($trueGetParams == FALSE) {
+				$paramCount = count($allParams) - 0;
 			} else {
-				$uri = "https://" . $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
+				$paramCount = count($allParams) - count($trueGetParams);
 			}
 
-			$uriParts = explode($allParams[0], $uri);
-			$uri = $uriParts[0];
+			if ($paramCount > 0) {
+				if (!isset($_SERVER['HTTPS'])) {
+					$uri = "http://" . $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
+				} else {
+					$uri = "https://" . $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
+				}
 
-			return $uri;
+				$uriParts = explode($allParams[0], $uri);
+				$uri = $uriParts[0];
+
+				return $uri; // Return the absolute path -> http://www.example.com/directory/to/active/file/
+			} else {
+				return false;
+			}
 		} else {
-			return false;
+			$allParams = self::start(null, null, null, false);
+			$trueGetParams = self::get_true_params();
+
+			if ($trueGetParams == FALSE) {
+				$paramCount = count($allParams) - 0;
+			} else {
+				$paramCount = count($allParams) - count($trueGetParams);
+			}
+
+			$uri = "";
+
+			for ($i = 0; $i < $paramCount; $i++) {
+				$uri .= "../";
+			}
+
+			return $uri; // Return the relative path -> ../../../../
 		}
 
 	}
