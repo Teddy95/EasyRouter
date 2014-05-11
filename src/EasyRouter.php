@@ -62,14 +62,14 @@ class route
 
 		$callback = false;
 
-		if ($load_GET == TRUE) {
-			if (self::$prepareString != FALSE) {
+		if ($load_GET === true) {
+			if (self::$prepareString !== false) {
 				self::execute($basedir, true);
 			} else {
 				self::start($basedir, $params, $exceptions, true);
 			}
 		} else {
-			if (self::$prepareString != FALSE) {
+			if (self::$prepareString !== false) {
 				$callback = self::execute($basedir, false);
 			} else {
 				$callback = self::start($basedir, $params, $exceptions, false);
@@ -98,15 +98,15 @@ class route
 		/**
 		 * Check params.
 		 */
-		if (is_null($basedir) && self::$basedir == TRUE) {
+		if (is_null($basedir) && self::$basedir == true) {
 			$basedir = self::$basedir;
 		}
 
-		if (is_null($params) && self::$params == TRUE) {
+		if (is_null($params) && self::$params == true) {
 			$params = self::$params;
 		}
 
-		if (is_null($exceptions) && self::$exceptions == TRUE) {
+		if (is_null($exceptions) && self::$exceptions == true) {
 			$exceptions = self::$exceptions;
 		}
 
@@ -166,7 +166,7 @@ class route
 		 */
 		$uri = str_replace($basedir . "/", "", $uri . $slash);
 
-		if (is_null($params) === TRUE) {
+		if (is_null($params) === true) {
 
 			$paramsCount = 0;
 			
@@ -271,19 +271,19 @@ class route
 						 * Check options.
 						 */
 						if (isset($exception["options"]) && !is_null($exception["options"])) {
-							if (isset($exception["options"]["strtolower"]) && $exception["options"]["strtolower"] == TRUE) {
+							if (isset($exception["options"]["strtolower"]) && $exception["options"]["strtolower"] === true) {
 								$route_i = strtolower($route_i);
 							}
-							if (isset($exception["options"]["strtoupper"]) && $exception["options"]["strtoupper"] == TRUE) {
+							if (isset($exception["options"]["strtoupper"]) && $exception["options"]["strtoupper"] === true) {
 								$route_i = strtoupper($route_i);
 							}
-							if (isset($exception["options"]["strtotime"]) && $exception["options"]["strtotime"] == TRUE) {
+							if (isset($exception["options"]["strtotime"]) && $exception["options"]["strtotime"] === true) {
 								$route_i = strtotime($route_i);
 							}
-							if (isset($exception["options"]["strtoint"]) && $exception["options"]["strtoint"] == TRUE) {
+							if (isset($exception["options"]["strtoint"]) && $exception["options"]["strtoint"] === true) {
 								$route_i = intval($route_i);
 							}
-							if (isset($exception["options"]["inttobinary"]) && $exception["options"]["inttobinary"] == TRUE) {
+							if (isset($exception["options"]["inttobinary"]) && $exception["options"]["inttobinary"] === true) {
 								$route_i = decbin($route_i);
 							}
 							if (isset($exception["options"]["addition"])) {
@@ -293,7 +293,7 @@ class route
 								$route_i = $exception["options"]["additionBefore"] . $route_i;
 							}
 							if (isset($exception["options"]["replace"])) {
-								if (isset($exception["options"]["replace"]["ireplace"]) && $exception["options"]["replace"]["ireplace"] == TRUE) {
+								if (isset($exception["options"]["replace"]["ireplace"]) && $exception["options"]["replace"]["ireplace"] === true) {
 									$route_i = str_ireplace($exception["options"]["replace"]["search"], $exception["options"]["replace"]["replace"], $route_i);
 								} else {
 									$route_i = str_replace($exception["options"]["replace"]["search"], $exception["options"]["replace"]["replace"], $route_i);
@@ -362,7 +362,7 @@ class route
 		self::$paramsCount = $paramsCount;
 		self::$routed = true;
 
-		if ($load_GET === TRUE) {
+		if ($load_GET === true) {
 			if (isset($__GET)) {
 				$GLOBALS['_GET'] = $__GET;
 				
@@ -391,11 +391,11 @@ class route
 		/**
 		 * Check params.
 		 */
-		if (is_null($basedir) && self::$basedir == TRUE) {
+		if (is_null($basedir) && self::$basedir == true) {
 			$basedir = self::$basedir;
 		}
 
-		if (self::$prepareString == FALSE) {
+		if (self::$prepareString === false) {
 			return false;
 		}
 
@@ -468,7 +468,7 @@ class route
 		$uriParts = explode('/', $uri);
 
 		for ($i = 0; $partsCount > $i; $i++) {
-			if (strpos($parts[$i], '-') == TRUE) {
+			if (strpos($parts[$i], '-') == true) {
 				$prepareParams = explode('-', $parts[$i]);
 				$uriParams = explode('-', $uriParts[$i], count($prepareParams));
 				
@@ -542,7 +542,7 @@ class route
 		self::$paramsCount = $paramsCount;
 		self::$routed = true;
 
-		if ($load_GET === TRUE) {
+		if ($load_GET === true) {
 			if (isset($__GET)) {
 				$GLOBALS['_GET'] = $__GET;
 				
@@ -621,7 +621,7 @@ class route
 	public static function error ($href, $params = null)
 	{
 
-		if (isset(self::$routed) && self::$routed === TRUE) {
+		if (isset(self::$routed) && self::$routed === true) {
 			if (!isset($params) || is_null($params)) {
 				if (!self::get_true_params()) {
 					$trueGetParams = 0;
@@ -738,11 +738,11 @@ class route
 	public static function get_active_path ($relative = false)
 	{
 
-		if ($relative == FALSE) {
+		if ($relative === false) {
 			$allParams = self::start(null, null, null, false);
 			$trueGetParams = self::get_true_params();
 
-			if ($trueGetParams == FALSE) {
+			if ($trueGetParams === false) {
 				$paramCount = count($allParams) - 0;
 			} else {
 				$paramCount = count($allParams) - count($trueGetParams);
