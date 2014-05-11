@@ -44,7 +44,7 @@ The parameters from your URL are now in the ```$_GET``` array.
 ### Download
 
 - [Releases on Github](https://github.com/Teddy95/EasyRouter/releases)
-- **[Download latest version from Github](https://github.com/Teddy95/EasyRouter/archive/v0.4.1.zip)**
+- **[Download latest version from Github](https://github.com/Teddy95/EasyRouter/archive/v0.5.1.zip)**
 - [Download master from Github](https://github.com/Teddy95/EasyRouter/archive/master.zip)
 
 -------------
