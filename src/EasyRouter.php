@@ -50,6 +50,36 @@ class route
 	private static $exceptions = false;
 
 	/**
+	 * @param string	$basedir_prepareString
+	 * @param array		$params
+	 * @param array		$exceptions
+	 *
+	 * @access public
+	 *
+	 * @uses			$basedir
+	 * @uses			$params
+	 * @uses			$exceptions
+	 */
+	public function __construct ($basedir_prepareString = null, $params = null, $exceptions = null)
+	{
+
+		if (!isset($params) === true && is_null($params) === true && !isset($exceptions) === true && is_null($exceptions) === true) {
+			if (isset($basedir_prepareString) === true && !empty($basedir_prepareString) === true) {
+				$this->prepareString = $basedir_prepareString;
+
+				return;
+			}
+		}
+
+		self::$basedir = $basedir_prepareString;
+		self::$params = $params;
+		self::$exceptions = $exceptions;
+
+		return;
+		
+	}
+
+	/**
 	 * @param string	$basedir
 	 * @param array		$params
 	 * @param array		$exceptions
