@@ -55,6 +55,12 @@ class route
 	 * @param array		$exceptions
 	 * @param bool		$load_GET
 	 *
+	 * @access public
+	 *
+	 * @uses			$prepareString
+	 * @uses			execute()
+	 * @uses			start()
+	 *
 	 * @return array	Returns an array with the uri-params on success or FALSE on failure
 	 */
 	public static function launch ($basedir = null, $params = null, $exceptions = null, $load_GET = true)
@@ -89,6 +95,14 @@ class route
 	 * @param array		$params
 	 * @param array		$exceptions
 	 * @param bool		$load_GET
+	 *
+	 * @access public
+	 *
+	 * @uses			$basedir
+	 * @uses			$params
+	 * @uses			$exceptions
+	 * @uses			$paramsCount
+	 * @uses			$routed
 	 *
 	 * @return array	Returns an array with the uri-params on success or FALSE on failure
 	 */
@@ -383,6 +397,14 @@ class route
 	 * @param string	$basedir
 	 * @param bool		$load_GET
 	 *
+	 * @access public
+	 *
+	 * @uses			$basedir
+	 * @uses			$prepareString
+	 * @uses			$prepareCount
+	 * @uses			$paramsCount
+	 * @uses			$routed
+	 *
 	 * @return array	Returns an array with the uri-params on success or FALSE on failure
 	 */
 	public static function execute ($basedir = null, $load_GET = true)
@@ -562,6 +584,10 @@ class route
 	/**
 	 * @param string	$prepareString
 	 *
+	 * @access public
+	 *
+	 * @uses			$prepareString
+	 *
 	 * @return bool		Returns FALSE on failure
 	 */
 	public static function prepare ($prepareString)
@@ -587,6 +613,8 @@ class route
 	}
 	
 	/**
+	 * @access public
+	 *
 	 * @return array	Returns an array with normal GET params
 	 */
 	public static function get_true_params ()
@@ -615,6 +643,13 @@ class route
 	/**
 	 * @param string	$href
 	 * @param int		$params
+	 *
+	 * @access public
+	 *
+	 * @uses			$routed
+	 * @uses			$paramsCount
+	 * @uses			$prepareCount
+	 * @uses			get_true_params()
 	 *
 	 * @return bool		Returns FALSE on failure
 	 */
@@ -658,6 +693,10 @@ class route
 	/**
 	 * @param string	$basedir
 	 *
+	 * @access public
+	 *
+	 * @uses			$basedir
+	 *
 	 * @return bool		Returns FALSE on failure
 	 */
 	public static function set_basedir ($basedir)
@@ -671,6 +710,13 @@ class route
 
 	}
 	
+	/**
+	 * @param string	$basedir
+	 *
+	 * @access public
+	 *
+	 * @uses			$basedir
+	 */
 	public static function unset_basedir ()
 	{
 
@@ -682,6 +728,10 @@ class route
 	
 	/**
 	 * @param array		$params
+	 *
+	 * @access public
+	 *
+	 * @uses			$params
 	 *
 	 * @return bool		Returns FALSE on failure
 	 */
@@ -696,6 +746,13 @@ class route
 
 	}
 	
+	/**
+	 * @param string	$params
+	 *
+	 * @access public
+	 *
+	 * @uses			$params
+	 */
 	public static function unset_params ()
 	{
 
@@ -707,6 +764,10 @@ class route
 	
 	/**
 	 * @param array		$exceptions
+	 *
+	 * @access public
+	 *
+	 * @uses			$exceptions
 	 *
 	 * @return bool		Returns FALSE on failure
 	 */
@@ -721,6 +782,13 @@ class route
 
 	}
 	
+	/**
+	 * @param string	$exceptions
+	 *
+	 * @access public
+	 *
+	 * @uses			$exceptions
+	 */
 	public static function unset_exceptions ()
 	{
 
@@ -732,6 +800,11 @@ class route
 	
 	/**
 	 * @param bool		$relative
+	 *
+	 * @access public
+	 *
+	 * @uses			start()
+	 * @uses			get_true_params()
 	 *
 	 * @return string	Returns the active path (url) on success or FALSE on failure
 	 */
