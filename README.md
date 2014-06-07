@@ -1,11 +1,8 @@
-<p align="center">
-  <img src="http://i.imgur.com/EIIWanz.png" alt="">
-  <br>
-  <h1>EasyRouter</h1>
-  <span>EasyRouter is a simple php url-routing system.</span>
-</p>
+# EasyRouter
 
--------------
+<p align="center">
+	<img src="http://i.imgur.com/EIIWanz.png" alt="">
+</p>
 
 EasyRouter is a simple php routing-system.
 
