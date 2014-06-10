@@ -1,8 +1,10 @@
 # EasyRouter
 
 <p align="center">
-	<img src="http://i.imgur.com/EIIWanz.png" alt="">
+	<img src="http://root.andre-sieverding.de/briefkasten/GithubRepoLogos/EasyRouter.png" alt="">
 </p>
+
+![](http://i.imgur.com/EIIWanz.png)
 
 EasyRouter is a simple php routing-system.
 
