@@ -7,6 +7,8 @@
 
 -------------
 
+![](http://i.imgur.com/EIIWanz.png)
+
 ### Benefits
 
 - Beautiful URL for every page on your website
@@ -39,10 +41,6 @@ or:
 ```
 
 The parameters from your URL are now in the ```$_GET``` array.
-
--------------
-
-![](http://i.imgur.com/EIIWanz.png)
 
 -------------
 
