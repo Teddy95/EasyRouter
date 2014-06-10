@@ -7,6 +7,8 @@
 
 -------------
 
+### Benefits
+
 - Beautiful URL for every page on your website
 - Search Engine Optimization
 - Easy to use in new and existing projects
