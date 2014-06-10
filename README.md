@@ -2,13 +2,16 @@
 
 <p align="center">
 	<img src="http://root.andre-sieverding.de/briefkasten/GithubRepoLogos/EasyRouter.png" alt="">
+	<p align="center">EasyRouter is a simple php routing-system.</p>
 </p>
 
-EasyRouter is a simple php routing-system.
+-------------
 
 - Beautiful URL for every page on your website
 - Search Engine Optimization
 - Easy to use in new and existing projects
+
+-------------
 
 ### Installation
 
