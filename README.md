@@ -4,8 +4,6 @@
 	<img src="http://root.andre-sieverding.de/briefkasten/GithubRepoLogos/EasyRouter.png" alt="">
 </p>
 
-![](http://i.imgur.com/EIIWanz.png)
-
 EasyRouter is a simple php routing-system.
 
 - Beautiful URL for every page on your website
@@ -36,6 +34,10 @@ or:
 ```
 
 The parameters from your URL are now in the ```$_GET``` array.
+
+-------------
+
+![](http://i.imgur.com/EIIWanz.png)
 
 -------------
 
