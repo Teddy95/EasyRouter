@@ -31,7 +31,7 @@ namespace EasyRouter;
 /**
  * Routing class
  */
-class route
+class class
 {
 
 	/**
