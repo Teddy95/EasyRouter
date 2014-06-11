@@ -26,7 +26,7 @@
  * SOFTWARE.
  */
 
-namespace Teddy95\EasyRouter;
+namespace EasyRouter;
 
 /**
  * Routing class
