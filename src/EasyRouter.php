@@ -859,7 +859,7 @@ class main
 				}
 
 				if (empty($allParams[0]) === true) {
-					return './';
+					return $uri;
 				}
 
 				$uriParts = explode($allParams[0], $uri);
