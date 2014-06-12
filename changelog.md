@@ -1,5 +1,10 @@
 # Changelog
 
+### Version 0.6.0 - 12.06.2014
+
+- Change class `route` to `main`
+- Change namespace `Teddy95\EasyRouter` to `EasyRouter`
+
 ### Version 0.5.2 - 09.06.2014
 
 ### Version 0.5.1 - 07.05.2014
