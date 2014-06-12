@@ -1,5 +1,9 @@
 # Changelog
 
+### Version 0.6.1 - 12.06.2014
+
+- Fixed bug in `get_active_path()` function
+
 ### Version 0.6.0 - 12.06.2014
 
 - Change class `route` to `main`
