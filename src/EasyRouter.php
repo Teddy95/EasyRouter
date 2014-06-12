@@ -858,6 +858,10 @@ class main
 					$uri = "https://" . $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
 				}
 
+				if (empty($allParams[0]) === true) {
+					return './';
+				}
+
 				$uriParts = explode($allParams[0], $uri);
 				$uri = $uriParts[0];
 
@@ -877,8 +881,10 @@ class main
 
 			$uri = "";
 
-			for ($i = 0; $i < $paramCount; $i++) {
-				$uri .= "../";
+			if (empty($allParams[0]) === false) {
+				for ($i = 0; $i < $paramCount; $i++) {
+					$uri .= "../";
+				}
 			}
 
 			return $uri; // Return the relative path -> ../../../../
