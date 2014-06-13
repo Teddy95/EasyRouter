@@ -437,6 +437,7 @@ class main
 	 * @uses			$prepareCount
 	 * @uses			$paramsCount
 	 * @uses			$routed
+	 * @uses			$allParams
 	 *
 	 * @return array	Returns an array with the uri-params on success or FALSE on failure
 	 */
@@ -596,6 +597,7 @@ class main
 
 		self::$paramsCount = $paramsCount;
 		self::$routed = true;
+		self::$allParams = isset($__GET) ? $__GET : false;
 
 		if ($load_GET === true) {
 			if (isset($__GET)) {
