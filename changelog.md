@@ -1,5 +1,9 @@
 # Changelog
 
+### Version 0.6.2 - 13.06.2014
+
+- Fixed bug in `get_active_path()` function
+
 ### Version 0.6.1 - 12.06.2014
 
 - Fixed bug in `get_active_path()` function
