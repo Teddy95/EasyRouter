@@ -40,6 +40,7 @@ class main
 	private static $paramsCount = 0;
 	private static $prepareCount = 0;
 	private static $routed = false;
+	private static $allParams = false;
 
 	/**
 	 * Other parameters for functions.
@@ -133,6 +134,7 @@ class main
 	 * @uses			$exceptions
 	 * @uses			$paramsCount
 	 * @uses			$routed
+	 * @uses			$allParams
 	 *
 	 * @return array	Returns an array with the uri-params on success or FALSE on failure
 	 */
@@ -405,6 +407,7 @@ class main
 
 		self::$paramsCount = $paramsCount;
 		self::$routed = true;
+		self::$allParams = isset($__GET) ? $__GET : false;
 
 		if ($load_GET === true) {
 			if (isset($__GET)) {
@@ -833,6 +836,7 @@ class main
 	 *
 	 * @access public
 	 *
+	 * @uses			$allParams
 	 * @uses			start()
 	 * @uses			get_true_params()
 	 *
@@ -842,7 +846,12 @@ class main
 	{
 
 		if ($relative === false) {
-			$allParams = self::start(null, null, null, false);
+			if (self::$allParams === false) {
+				$allParams = self::start(null, null, null, false);
+			} else {
+				$allParams = explode('/', implode('/', self::$allParams));
+			}
+
 			$trueGetParams = self::get_true_params();
 
 			if ($trueGetParams === false) {
@@ -870,7 +879,12 @@ class main
 				return false;
 			}
 		} else {
-			$allParams = self::start(null, null, null, false);
+			if (self::$allParams === false) {
+				$allParams = self::start(null, null, null, false);
+			} else {
+				$allParams = explode('/', implode('/', self::$allParams));
+			}
+
 			$trueGetParams = self::get_true_params();
 
 			if ($trueGetParams == FALSE) {
@@ -884,6 +898,12 @@ class main
 			if (empty($allParams[0]) === false) {
 				for ($i = 0; $i < $paramCount; $i++) {
 					$uri .= "../";
+				}
+			}
+
+			if (substr($_SERVER["REQUEST_URI"], -1, 1) != '/') {
+				if (strlen($uri) >= 3) {
+					$uri = substr($uri, 0, strlen($uri)-3);
 				}
 			}
 
