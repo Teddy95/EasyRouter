@@ -60,6 +60,8 @@ class main
 	 * @uses			$basedir
 	 * @uses			$params
 	 * @uses			$exceptions
+	 *
+	 * @return void
 	 */
 	public function __construct ($basedir_prepareString = null, $params = null, $exceptions = null)
 	{
@@ -751,6 +753,8 @@ class main
 	 * @access public
 	 *
 	 * @uses			$basedir
+	 *
+	 * @return void
 	 */
 	public static function unset_basedir ()
 	{
@@ -787,6 +791,8 @@ class main
 	 * @access public
 	 *
 	 * @uses			$params
+	 *
+	 * @return void
 	 */
 	public static function unset_params ()
 	{
@@ -823,6 +829,8 @@ class main
 	 * @access public
 	 *
 	 * @uses			$exceptions
+	 *
+	 * @return void
 	 */
 	public static function unset_exceptions ()
 	{
