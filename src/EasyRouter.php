@@ -38,7 +38,7 @@ class main
 	 * Parameters for functions.
 	 */
 	private static $paramsCount = 0;
-	private static $prepareCount = 0;
+	private static $getCount = 0;
 	private static $routed = false;
 	private static $allParams = false;
 
@@ -80,6 +80,120 @@ class main
 
 		return;
 		
+	}
+	
+	/**
+	 * @param string	$basedir
+	 *
+	 * @access public
+	 *
+	 * @uses			$basedir
+	 *
+	 * @return bool		Returns FALSE on failure
+	 */
+	public static function set_basedir ($basedir)
+	{
+
+		if (isset($basedir)) {
+			self::$basedir = $basedir;
+		} else {
+			return false;
+		}
+
+	}
+	
+	/**
+	 * @param string	$basedir
+	 *
+	 * @access public
+	 *
+	 * @uses			$basedir
+	 *
+	 * @return void
+	 */
+	public static function unset_basedir ()
+	{
+
+		self::$basedir = false;
+
+		return;
+
+	}
+	
+	/**
+	 * @param array		$params
+	 *
+	 * @access public
+	 *
+	 * @uses			$params
+	 *
+	 * @return bool		Returns FALSE on failure
+	 */
+	public static function set_params ($params)
+	{
+
+		if (isset($params)) {
+			self::$params = $params;
+		} else {
+			return false;
+		}
+
+	}
+	
+	/**
+	 * @param string	$params
+	 *
+	 * @access public
+	 *
+	 * @uses			$params
+	 *
+	 * @return void
+	 */
+	public static function unset_params ()
+	{
+
+		self::$params = false;
+
+		return;
+
+	}
+	
+	/**
+	 * @param array		$exceptions
+	 *
+	 * @access public
+	 *
+	 * @uses			$exceptions
+	 *
+	 * @return bool		Returns FALSE on failure
+	 */
+	public static function set_exceptions ($exceptions)
+	{
+
+		if (isset($exceptions)) {
+			self::$exceptions = $exceptions;
+		} else {
+			return false;
+		}
+
+	}
+	
+	/**
+	 * @param string	$exceptions
+	 *
+	 * @access public
+	 *
+	 * @uses			$exceptions
+	 *
+	 * @return void
+	 */
+	public static function unset_exceptions ()
+	{
+
+		self::$exceptions = false;
+
+		return;
+
 	}
 
 	/**
@@ -410,6 +524,7 @@ class main
 		self::$paramsCount = $paramsCount;
 		self::$routed = true;
 		self::$allParams = isset($__GET) ? $__GET : false;
+		self::$getCount = isset($__GET) ? count($__GET) : 0;
 
 		if ($load_GET === true) {
 			if (isset($__GET)) {
@@ -534,9 +649,6 @@ class main
 					if (isset($uriParams[$j]) && !is_null($uriParams[$j]) && !empty($uriParams[$j])) {
 						$__GET[substr($prepareParams[$j], 1, strlen($prepareParams[$j]) - 2)] = $uriParams[$j];
 						$latestKey = substr($prepareParams[$j], 1, strlen($prepareParams[$j]) - 2);
-						if ($j > 0) {
-							self::$prepareCount++;
-						}
 					}
 				}
 
@@ -600,6 +712,7 @@ class main
 		self::$paramsCount = $paramsCount;
 		self::$routed = true;
 		self::$allParams = isset($__GET) ? $__GET : false;
+		self::$getCount = isset($__GET) ? count($__GET) : 0;
 
 		if ($load_GET === true) {
 			if (isset($__GET)) {
@@ -701,9 +814,9 @@ class main
 					$trueGetParams = count(self::get_true_params());
 				}
 
-				$paramsCount = self::$paramsCount + $trueGetParams;
+				$realCount = self::$getCount - $trueGetParams;
 
-				if (count($_GET) - self::$prepareCount > $paramsCount) {
+				if (self::$paramsCount < $realCount) {
 					header('Location: ' . $href);
 					exit();
 				}
@@ -714,9 +827,9 @@ class main
 					$trueGetParams = count(self::get_true_params());
 				}
 
-				$paramsCount = $params + $trueGetParams;
+				$realCount = self::$getCount - $trueGetParams;
 
-				if (count($_GET) - self::$prepareCount > $paramsCount) {
+				if ($params < $realCount) {
 					header('Location: ' . $href);
 					exit();
 				}
@@ -724,120 +837,6 @@ class main
 		} else {
 			return false;
 		}
-
-	}
-	
-	/**
-	 * @param string	$basedir
-	 *
-	 * @access public
-	 *
-	 * @uses			$basedir
-	 *
-	 * @return bool		Returns FALSE on failure
-	 */
-	public static function set_basedir ($basedir)
-	{
-
-		if (isset($basedir)) {
-			self::$basedir = $basedir;
-		} else {
-			return false;
-		}
-
-	}
-	
-	/**
-	 * @param string	$basedir
-	 *
-	 * @access public
-	 *
-	 * @uses			$basedir
-	 *
-	 * @return void
-	 */
-	public static function unset_basedir ()
-	{
-
-		self::$basedir = false;
-
-		return;
-
-	}
-	
-	/**
-	 * @param array		$params
-	 *
-	 * @access public
-	 *
-	 * @uses			$params
-	 *
-	 * @return bool		Returns FALSE on failure
-	 */
-	public static function set_params ($params)
-	{
-
-		if (isset($params)) {
-			self::$params = $params;
-		} else {
-			return false;
-		}
-
-	}
-	
-	/**
-	 * @param string	$params
-	 *
-	 * @access public
-	 *
-	 * @uses			$params
-	 *
-	 * @return void
-	 */
-	public static function unset_params ()
-	{
-
-		self::$params = false;
-
-		return;
-
-	}
-	
-	/**
-	 * @param array		$exceptions
-	 *
-	 * @access public
-	 *
-	 * @uses			$exceptions
-	 *
-	 * @return bool		Returns FALSE on failure
-	 */
-	public static function set_exceptions ($exceptions)
-	{
-
-		if (isset($exceptions)) {
-			self::$exceptions = $exceptions;
-		} else {
-			return false;
-		}
-
-	}
-	
-	/**
-	 * @param string	$exceptions
-	 *
-	 * @access public
-	 *
-	 * @uses			$exceptions
-	 *
-	 * @return void
-	 */
-	public static function unset_exceptions ()
-	{
-
-		self::$exceptions = false;
-
-		return;
 
 	}
 	
