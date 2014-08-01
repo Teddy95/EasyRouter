@@ -921,5 +921,35 @@ class main
 
 	}
 	
+	/**
+	 * @param string	$url
+	 * @param bool		$relative
+	 * @param bool		$print
+	 *
+	 * @access public
+	 *
+	 * @uses			get_active_path()
+	 *
+	 * @return string	Returns the url
+	 */
+	public static function url ($url, $relative = true, $print = true)
+	{
+
+		if (substr($url, 0, 1) == '/') {
+			$url = substr($url, 1, strlen($url)-1);
+		}
+
+		$url = self::get_active_path($relative) . $url;
+
+		if ($print === true) {
+			echo $url;
+
+			return;
+		} else {
+			return $url;
+		}
+
+	}
+	
 }
 ?>
