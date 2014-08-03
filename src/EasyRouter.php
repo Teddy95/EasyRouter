@@ -433,6 +433,12 @@ class main
 						 * Check options.
 						 */
 						if (isset($exception["options"]) && !is_null($exception["options"])) {
+							if (isset($exception["revertOptions"]) && !is_null($exception["revertOptions"])) {
+								if ($exception["revertOptions"] === true) {
+									$routeParamOriginal = $route_i;
+								}
+							}
+
 							if (isset($exception["options"]["strtolower"]) && $exception["options"]["strtolower"] === true) {
 								$route_i = strtolower($route_i);
 							}
@@ -483,6 +489,13 @@ class main
 									$l++;
 								}
 							}
+
+							if (isset($exception["revertOptions"]) && !is_null($exception["revertOptions"])) {
+								if ($exception["revertOptions"] === true) {
+									$route_i = $routeParamOriginal;
+								}
+							}
+
 							if ($l > 0) {
 								$__GET[$params[$i + $k]] = $route_i;
 								$l = 0;
