@@ -829,7 +829,7 @@ class main
 
 				$realCount = self::$getCount - $trueGetParams;
 
-				if (self::$paramsCount < $realCount) {
+				if (self::$paramsCount < $realCount && self::$paramsCount > 0) {
 					header('Location: ' . $href);
 					exit();
 				}
