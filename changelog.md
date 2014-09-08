@@ -1,5 +1,9 @@
 # Changelog
 
+### Version 0.7.1 - 08.09.2014
+
+- Fixed bug in `error()` function
+
 ### Version 0.7.0 - 01.08.2014
 
 - Add [url function](https://github.com/Teddy95/EasyRouter/wiki/url-function)
