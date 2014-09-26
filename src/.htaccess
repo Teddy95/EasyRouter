@@ -1,3 +1,6 @@
+Options +FollowSymLinks
+RewriteEngine on
+
 RewriteRule (.*)\ /index.php [L]
 
 # Define the RewriteBase — Root of your project
