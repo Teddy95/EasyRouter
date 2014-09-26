@@ -1,5 +1,9 @@
 # Changelog
 
+### Version 0.7.2 - 26.09.2014
+
+- Fixed bug in .htaccess (added RewriteBase /)
+
 ### Version 0.7.1 - 08.09.2014
 
 - Fixed bug in `error()` function
