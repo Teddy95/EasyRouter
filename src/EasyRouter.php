@@ -57,9 +57,9 @@ class main
 	 *
 	 * @access public
 	 *
-	 * @uses			$basedir
-	 * @uses			$params
-	 * @uses			$exceptions
+	 * @uses		$basedir
+	 * @uses		$params
+	 * @uses		$exceptions
 	 *
 	 * @return void
 	 */
@@ -87,7 +87,7 @@ class main
 	 *
 	 * @access public
 	 *
-	 * @uses			$basedir
+	 * @uses		$basedir
 	 *
 	 * @return bool		Returns FALSE on failure
 	 */
@@ -107,7 +107,7 @@ class main
 	 *
 	 * @access public
 	 *
-	 * @uses			$basedir
+	 * @uses		$basedir
 	 *
 	 * @return void
 	 */
@@ -125,7 +125,7 @@ class main
 	 *
 	 * @access public
 	 *
-	 * @uses			$params
+	 * @uses		$params
 	 *
 	 * @return bool		Returns FALSE on failure
 	 */
@@ -145,7 +145,7 @@ class main
 	 *
 	 * @access public
 	 *
-	 * @uses			$params
+	 * @uses		$params
 	 *
 	 * @return void
 	 */
@@ -163,7 +163,7 @@ class main
 	 *
 	 * @access public
 	 *
-	 * @uses			$exceptions
+	 * @uses		$exceptions
 	 *
 	 * @return bool		Returns FALSE on failure
 	 */
@@ -183,7 +183,7 @@ class main
 	 *
 	 * @access public
 	 *
-	 * @uses			$exceptions
+	 * @uses		$exceptions
 	 *
 	 * @return void
 	 */
@@ -204,9 +204,9 @@ class main
 	 *
 	 * @access public
 	 *
-	 * @uses			$prepareString
-	 * @uses			execute()
-	 * @uses			start()
+	 * @uses		$prepareString
+	 * @uses		execute()
+	 * @uses		start()
 	 *
 	 * @return array	Returns an array with the uri-params on success or FALSE on failure
 	 */
@@ -245,12 +245,12 @@ class main
 	 *
 	 * @access public
 	 *
-	 * @uses			$basedir
-	 * @uses			$params
-	 * @uses			$exceptions
-	 * @uses			$paramsCount
-	 * @uses			$routed
-	 * @uses			$allParams
+	 * @uses		$basedir
+	 * @uses		$params
+	 * @uses		$exceptions
+	 * @uses		$paramsCount
+	 * @uses		$routed
+	 * @uses		$allParams
 	 *
 	 * @return array	Returns an array with the uri-params on success or FALSE on failure
 	 */
@@ -562,12 +562,12 @@ class main
 	 *
 	 * @access public
 	 *
-	 * @uses			$basedir
-	 * @uses			$prepareString
-	 * @uses			$prepareCount
-	 * @uses			$paramsCount
-	 * @uses			$routed
-	 * @uses			$allParams
+	 * @uses		$basedir
+	 * @uses		$prepareString
+	 * @uses		$prepareCount
+	 * @uses		$paramsCount
+	 * @uses		$routed
+	 * @uses		$allParams
 	 *
 	 * @return array	Returns an array with the uri-params on success or FALSE on failure
 	 */
@@ -749,7 +749,7 @@ class main
 	 *
 	 * @access public
 	 *
-	 * @uses			$prepareString
+	 * @uses		$prepareString
 	 *
 	 * @return bool		Returns FALSE on failure
 	 */
@@ -809,10 +809,10 @@ class main
 	 *
 	 * @access public
 	 *
-	 * @uses			$routed
-	 * @uses			$paramsCount
-	 * @uses			$prepareCount
-	 * @uses			get_true_params()
+	 * @uses		$routed
+	 * @uses		$paramsCount
+	 * @uses		$prepareCount
+	 * @uses		get_true_params()
 	 *
 	 * @return bool		Returns FALSE on failure
 	 */
@@ -858,9 +858,9 @@ class main
 	 *
 	 * @access public
 	 *
-	 * @uses			$allParams
-	 * @uses			start()
-	 * @uses			get_true_params()
+	 * @uses		$allParams
+	 * @uses		start()
+	 * @uses		get_true_params()
 	 *
 	 * @return string	Returns the active path (url) on success or FALSE on failure
 	 */
@@ -941,7 +941,7 @@ class main
 	 *
 	 * @access public
 	 *
-	 * @uses			get_active_path()
+	 * @uses		get_active_path()
 	 *
 	 * @return string	Returns the url
 	 */
