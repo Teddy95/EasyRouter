@@ -824,7 +824,7 @@ class main
 	public static function error ($href, $params = null, $staticRedirect = false)
 	{
 
-		if ($staticRedirect === flase) {
+		if ($staticRedirect === false) {
 			if (isset(self::$routed) && self::$routed === true) {
 				if (!isset($params) || is_null($params)) {
 					if (!self::get_true_params()) {
