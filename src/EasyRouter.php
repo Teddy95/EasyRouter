@@ -665,15 +665,19 @@ class main
 					}
 				}
 
-				$prepareParams = $parts[$i];
-				$uriParams = @$uriParts[$i];
+				if (isset($parts[$i]) && isset($uriParts[$i])) {
+					$prepareParams = $parts[$i];
+					$uriParams = $uriParts[$i];
+				}
 
 				if (isset($uriParams) && !is_null($uriParams) && !empty($uriParams)) {
 					$paramsCount++;
 				}
 			} else {
-				$prepareParams = $parts[$i];
-				$uriParams = @$uriParts[$i];
+				if (isset($parts[$i]) && isset($uriParts[$i])) {
+					$prepareParams = $parts[$i];
+					$uriParams = $uriParts[$i];
+				}
 
 				if (isset($uriParams) && !is_null($uriParams) && !empty($uriParams)) {
 					$__GET[substr($prepareParams, 1, strlen($prepareParams) - 2)] = $uriParams;
@@ -806,6 +810,7 @@ class main
 	/**
 	 * @param string	$href
 	 * @param int		$params
+	 * @param bool		$staticRedirect
 	 *
 	 * @access public
 	 *
@@ -816,40 +821,46 @@ class main
 	 *
 	 * @return bool		Returns FALSE on failure
 	 */
-	public static function error ($href, $params = null)
+	public static function error ($href, $params = null, $staticRedirect = false)
 	{
 
-		if (isset(self::$routed) && self::$routed === true) {
-			if (!isset($params) || is_null($params)) {
-				if (!self::get_true_params()) {
-					$trueGetParams = 0;
+		if ($staticRedirect === flase) {
+			if (isset(self::$routed) && self::$routed === true) {
+				if (!isset($params) || is_null($params)) {
+					if (!self::get_true_params()) {
+						$trueGetParams = 0;
+					} else {
+						$trueGetParams = count(self::get_true_params());
+					}
+
+					$realCount = self::$getCount - $trueGetParams;
+
+					if (self::$paramsCount < $realCount && self::$paramsCount > 0) {
+						header('Location: ' . $href);
+						exit();
+					}
 				} else {
-					$trueGetParams = count(self::get_true_params());
-				}
+					if (!self::get_true_params()) {
+						$trueGetParams = 0;
+					} else {
+						$trueGetParams = count(self::get_true_params());
+					}
 
-				$realCount = self::$getCount - $trueGetParams;
+					$realCount = self::$getCount - $trueGetParams;
 
-				if (self::$paramsCount < $realCount && self::$paramsCount > 0) {
-					header('Location: ' . $href);
-					exit();
-				}
-			} else {
-				if (!self::get_true_params()) {
-					$trueGetParams = 0;
-				} else {
-					$trueGetParams = count(self::get_true_params());
-				}
-
-				$realCount = self::$getCount - $trueGetParams;
-
-				if ($params < $realCount) {
-					header('Location: ' . $href);
-					exit();
+					if ($params < $realCount) {
+						header('Location: ' . $href);
+						exit();
+					}
 				}
 			}
 		} else {
-			return false;
+			header('Location: ' . $href);
+			exit();
+			ob_end_flush();
 		}
+
+		return false;
 
 	}
 	
