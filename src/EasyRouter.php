@@ -940,6 +940,10 @@ class main
 				}
 			}
 
+			if (strlen($uri) == 0) {
+				$uri = './';
+			}
+
 			return $uri; // Return the relative path -> ../../../../
 		}
 
