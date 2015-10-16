@@ -1,12 +1,11 @@
 Options +FollowSymLinks
-RewriteEngine on
 
-RewriteRule (.*)\ /index.php [L]
-
-# Define the RewriteBase — Root of your project
-# RewriteBase /
-
-RewriteCond %{REQUEST_FILENAME} -f [OR]
-RewriteCond %{REQUEST_FILENAME} -d
-RewriteRule .+ - [L]
-RewriteRule .* index.php [L]
+<IfModule mod_rewrite.c>
+	RewriteEngine on
+	# RewriteBase /
+	RewriteRule (.*)\ /index.php [L]
+	RewriteCond %{REQUEST_FILENAME} -f [OR]
+	RewriteCond %{REQUEST_FILENAME} -d
+	RewriteRule .+ - [L]
+	RewriteRule .* index.php [L]
+</IfModule>
