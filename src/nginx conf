@@ -1,0 +1,7 @@
+# nginx configuration 
+location / { 
+rewrite (.*)\ /index.php break; 
+if (-e $request_filename){ 
+rewrite ^(.*)$ /index.php break; 
+} 
+}
